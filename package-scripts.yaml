@@ -3,26 +3,49 @@ scripts:
     dev:
       script: tsnd --cls --exit-child --ignore-watch node_modules --quiet  --respawn --rs --transpile-only -r tsconfig-paths/register src
       description: Start in dev mode
+    build: nps clean transpile
+
+  build:
+    script: nps clean compile
+    description: Build project
 
   test:
     default:
       script: jest --config test/jest.config.ts
       description: Run tests
     watch:
-      script: jest --config test/jest.config.ts --watch
+      script: nps 'test --watch --coverage=false'
       description: Run tests (watch)
+    ci:
+      script: nps 'test --silent --reporters=jest-silent-reporter'
+      hiddenFromHelp: true
 
   lint:
     check:
-      script: 'eslint . --ext .ts'
-      hiddenFromHelp: true
+      script: eslint . --ext .ts
+      description: Check for lint errors
     fix:
-      script: 'eslint . --ext .ts --fix'
+      script: nps 'lint.check --fix'
+      description: Fix lint errors
+    ci:
+      script: nps 'lint.check --quiet'
+      hiddenFromHelp: true
 
   format:
     check:
-      script: 'prettier --check .'
+      script: prettier --check .
       hiddenFromHelp: true
     fix:
-      script: 'prettier --write .'
-      description: 'Format files'
+      script: prettier --write .
+      description: Format files
+    ci:
+      script: nps 'format.check --loglevel warn'
+      hiddenFromHelp: true
+
+  clean:
+    script: rm -rf dist
+    hiddenFromHelp: true
+
+  compile:
+    script: tsc -p tsconfig.compile.json
+    hiddenFromHelp: true
