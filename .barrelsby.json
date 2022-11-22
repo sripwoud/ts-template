@@ -1,4 +1,5 @@
 {
   "directory": ["src/mod"],
-  "delete": true
+  "delete": true,
+  "singleQuotes": true
 }
