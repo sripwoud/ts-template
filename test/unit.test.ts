@@ -1,4 +1,4 @@
-import { TEST } from '@mod/file'
+import { TEST } from '@mod'
 
 describe('Test', () => {
   it('some test', () => {
