@@ -1,3 +1,10 @@
 node_modules
+
+# TS build dir
 dist
+
+# Jest
+coverage
+
+# JetBrains IDE
 .idea
