@@ -1,11 +1,11 @@
-import {TEST} from "@mod/file";
+import { TEST } from '@mod/file'
 
 const A = [1, 2, 3]
 
 interface B {
-    foo: string
+  foo: string
 }
 
-const c: B = {foo: 'bar'}
+const c: B = { foo: 'bar' }
 
 console.log(A, c, TEST, 1)

@@ -1,5 +1,12 @@
 plugins: [ '@typescript-eslint', 'jest', 'sort' ]
-extends: [ 'eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:sort/recommended', 'standard-with-typescript', 'prettier' ]
+extends:
+  [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:sort/recommended',
+    'standard-with-typescript',
+    'prettier',
+  ]
 parser: '@typescript-eslint/parser'
 parserOptions:
   project: [ './tsconfig.json', './test/tsconfig.json' ]

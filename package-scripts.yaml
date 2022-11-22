@@ -14,8 +14,15 @@ scripts:
 
   lint:
     check:
-      script: 'eslint . --ext .ts --ignore-path .gitignore'
+      script: 'eslint . --ext .ts'
       hiddenFromHelp: true
     fix:
-      script: 'eslint . --ext .ts --fix --ignore-path .gitignore'
+      script: 'eslint . --ext .ts --fix'
 
+  format:
+    check:
+      script: 'prettier --check .'
+      hiddenFromHelp: true
+    fix:
+      script: 'prettier --write .'
+      description: 'Format files'
