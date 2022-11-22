@@ -18,6 +18,7 @@ specifiers:
   jest-silent-reporter: ^0.5.0
   module-alias: ^2.2.2
   nps: ^5.10.0
+  prettier: ^2.7.1
   reflect-metadata: ^0.1.13
   supertest: ^6.3.1
   ts-jest: ^29.0.3
@@ -44,6 +45,7 @@ devDependencies:
   jest: 29.3.1_@types+node@18.11.9
   jest-mock-extended: 3.0.1_4f6uxrzmuwipl5rr3bcogf6k74
   jest-silent-reporter: 0.5.0
+  prettier: 2.7.1
   reflect-metadata: 0.1.13
   supertest: 6.3.1
   ts-jest: 29.0.3_6crhf7ajeizammv76u753sn6i4
@@ -3456,6 +3458,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: { integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g== }
     engines: { node: '>= 0.8.0' }
+    dev: true
+
+  /prettier/2.7.1:
+    resolution: { integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g== }
+    engines: { node: '>=10.13.0' }
+    hasBin: true
     dev: true
 
   /pretty-format/29.3.1:
