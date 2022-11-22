@@ -8,3 +8,5 @@ coverage
 
 # JetBrains IDE
 .idea
+
+.env
