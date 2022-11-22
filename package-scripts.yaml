@@ -3,6 +3,11 @@ scripts:
     dev:
       script: tsnd --cls --exit-child --ignore-watch node_modules --quiet  --respawn --rs --transpile-only -r tsconfig-paths/register src
       description: Start in dev mode
+    build: nps clean transpile
+
+  build:
+    script: nps clean compile
+    description: Build project
 
   test:
     default:
@@ -13,6 +18,7 @@ scripts:
       description: Run tests (watch)
     ci:
       script: nps 'test --silent --reporters=jest-silent-reporter'
+      hiddenFromHelp: true
 
   lint:
     check:
@@ -31,4 +37,15 @@ scripts:
       hiddenFromHelp: true
     fix:
       script: prettier --write .
-      description: 'Format files'
+      description: Format files
+    ci:
+      script: nps 'format.check --loglevel warn'
+      hiddenFromHelp: true
+
+  clean:
+    script: rm -rf dist
+    hiddenFromHelp: true
+
+  compile:
+    script: tsc -p tsconfig.compile.json
+    hiddenFromHelp: true
