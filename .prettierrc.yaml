@@ -13,6 +13,7 @@ overrides:
   - files: '*.json'
     options:
       parser: json
+      trailingComma: none
   - files: '*.md'
     options:
       parser: markdown
