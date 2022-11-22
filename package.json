@@ -41,5 +41,8 @@
     "barrelsby": "^2.5.1",
     "module-alias": "^2.2.2",
     "nps": "^5.10.0"
+  },
+  "engines": {
+    "node": ">=19"
   }
 }
