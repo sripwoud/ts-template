@@ -1,7 +1,8 @@
-<div style='display:flex; align-items: flex-end;'>
-<img alt="ts icon" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"/>
-<div style='margin-left: 5px'>Project template</div>
+<div style='display: flex'>
+  <img alt='ts icon' width='50' src='https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg'/>
+  <span style='font-weight: bold'>&nbsp;&nbsp<strong>PROJECT TEMPLATE</strong></span>
 </div>
+<br/>
 
 | Feature                               | With                                                                                                                        | Configuration File                                                                                                                                                                                                                        |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
