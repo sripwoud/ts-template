@@ -19,3 +19,10 @@ scripts:
     fix:
       script: 'eslint . --ext .ts --fix --ignore-path .gitignore'
 
+  format:
+    check:
+      script: 'prettier --check --ignore-path .gitignore .'
+      hiddenFromHelp: true
+    fix:
+      script: 'prettier --write --ignore-path .gitignore .'
+      description: 'Format files'
