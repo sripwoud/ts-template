@@ -2,7 +2,7 @@ import {TEST} from "@mod/file";
 
 const A = [1, 2, 3]
 
-type B = {
+interface B {
     foo: string
 }
 

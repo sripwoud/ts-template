@@ -11,3 +11,11 @@ scripts:
     watch:
       script: jest --config test/jest.config.ts --watch
       description: Run tests (watch)
+
+  lint:
+    check:
+      script: 'eslint . --ext .ts --ignore-path .gitignore'
+      hiddenFromHelp: true
+    fix:
+      script: 'eslint . --ext .ts --fix --ignore-path .gitignore'
+
