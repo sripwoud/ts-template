@@ -1,0 +1,12 @@
+node_modules
+pnpm-lock.yaml
+
+# TS build dir
+dist
+
+# Jest
+coverage
+
+# JetBrains IDE
+.idea
+
