@@ -9,20 +9,26 @@ scripts:
       script: jest --config test/jest.config.ts
       description: Run tests
     watch:
-      script: jest --config test/jest.config.ts --watch
+      script: nps 'test --watch --coverage=false'
       description: Run tests (watch)
+    ci:
+      script: nps 'test --silent --reporters=jest-silent-reporter'
 
   lint:
     check:
-      script: 'eslint . --ext .ts'
-      hiddenFromHelp: true
+      script: eslint . --ext .ts
+      description: Check for lint errors
     fix:
-      script: 'eslint . --ext .ts --fix'
+      script: nps 'lint.check --fix'
+      description: Fix lint errors
+    ci:
+      script: nps 'lint.check --quiet'
+      hiddenFromHelp: true
 
   format:
     check:
-      script: 'prettier --check .'
+      script: prettier --check .
       hiddenFromHelp: true
     fix:
-      script: 'prettier --write .'
+      script: prettier --write .
       description: 'Format files'
