@@ -6,6 +6,9 @@
   "scripts": {
     "nps": "nps"
   },
+  "_moduleAliases": {
+    "@mod": "dist/mod"
+  },
   "author": "r1oga",
   "license": "ISC",
   "devDependencies": {
@@ -29,9 +32,11 @@
     "supertest": "^6.3.1",
     "ts-jest": "^29.0.3",
     "ts-node-dev": "^2.0.0",
-    "tsconfig-paths": "^4.1.0"
+    "tsconfig-paths": "^4.1.0",
+    "tslib": "^2.4.1"
   },
   "dependencies": {
+    "barrelsby": "^2.5.1",
     "module-alias": "^2.2.2",
     "nps": "^5.10.0"
   }
