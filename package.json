@@ -6,6 +6,9 @@
   "scripts": {
     "nps": "nps"
   },
+  "_moduleAliases": {
+    "@mod": "dist/mod"
+  },
   "author": "r1oga",
   "license": "ISC",
   "devDependencies": {
