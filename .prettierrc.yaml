@@ -7,7 +7,7 @@ overrides:
   - files: '*.ts'
     options:
       parser: typescript
-  - files: [ '*.yml', '*.yaml' ]
+  - files: ['*.yml', '*.yaml']
     options:
       parser: yaml
   - files: '*.json'

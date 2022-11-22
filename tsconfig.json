@@ -1,8 +1,5 @@
 {
-  "include": [
-    "src",
-    "test"
-  ],
+  "include": ["src", "test"],
   "compilerOptions": {
     "noEmit": true,
     "baseUrl": ".",
@@ -27,9 +24,7 @@
     "skipLibCheck": true,
     "importHelpers": true,
     "paths": {
-      "@mod/*": [
-        "src/mod/*"
-      ]
+      "@mod/*": ["src/mod/*"]
     }
   }
 }
