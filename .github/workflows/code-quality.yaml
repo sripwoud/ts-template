@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  lint-format-test-build:
+  lint-format-build-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,8 +45,13 @@ jobs:
       - name: Format
         run: npm run nps format.ci
 
+      - name: Build
+        run: npm run nps build
+
       - name: Test
         run: npm run nps test.ci
 
-      - name: Build
-        run: npm run nps build
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@1.1.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
