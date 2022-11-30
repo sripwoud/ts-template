@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  lint-format-test-build:
+  lint-format-build-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,8 +45,11 @@ jobs:
       - name: Format
         run: npm run nps format.ci
 
+      - name: Build
+        run: npm run nps build
+
       - name: Test
         run: npm run nps test.ci
 
-      - name: Build
-        run: npm run nps build
+      - name: Test Coverage (codecov)
+        uses: codecov/codecov-action@v3
