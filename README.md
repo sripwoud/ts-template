@@ -4,6 +4,8 @@
 </div>
 <br/>
 
+[![Coverage Status](https://coveralls.io/repos/github/r1oga/ts-template/badge.svg?branch=main)](https://coveralls.io/github/r1oga/ts-template?branch=main)
+
 | Feature                               | With                                                                                                                        | Configuration File                                                                                                                                                                                                                        |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Typings                               | [Typescript](https://www.typescriptlang.org/)                                                                               | [tsconfig.json](./tsconfig.json)                                                                                                                                                                                                          |
