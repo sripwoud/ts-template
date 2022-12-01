@@ -1,11 +1,14 @@
-name: Code Quality
+name: Coverage Report
 on:
+  # push trigger required to get coveralls monitoring of default branch
+  # pull_request required to get PR comments
   pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  lint-format-build:
+  coveralls:
     runs-on: ubuntu-latest
 
     steps:
@@ -41,11 +44,11 @@ jobs:
       - name: Install
         run: |
           pnpm i --ignore-scripts --reporter=silent
-      - name: Lint
-        run: pnpm run nps lint.ci
 
-      - name: Format
-        run: pnpm run nps format.ci
+      - name: Test
+        run: pnpm run nps test.ci
 
-      - name: Build
-        run: pnpm run nps build
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
