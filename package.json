@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "barrelsby": "^2.5.1",
+    "concurrently": "^7.6.0",
     "module-alias": "^2.2.2",
     "nps": "^5.10.0"
   },
