@@ -62,3 +62,11 @@ scripts:
     ci:
       script: nps 'test --silent --reporters=jest-silent-reporter'
       hiddenFromHelp: true
+
+  validate:
+    default:
+      script: concurrently tsc 'nps test' 'nps format.check' 'nps lint.check'
+      description: Perform static analysis testing (lint, format...)
+    ci:
+      script: concurrently tsc 'nps format.ci' 'nps lint.ci' # test run by coveralls action
+      hiddenFromHelp: true
