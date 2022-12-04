@@ -37,6 +37,10 @@ scripts:
       script: nps 'lint.check --quiet'
       hiddenFromHelp: true
 
+  precommit:
+    script: tsc && lint-staged
+    hiddenFromHelp: true
+
   start:
     default:
       script: nps build start.prod
