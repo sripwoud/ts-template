@@ -39,13 +39,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install
-        run: |
-          pnpm i --ignore-scripts --reporter=silent
-      - name: Lint
-        run: pnpm run nps lint.ci
+        run: pnpm i --ignore-scripts --reporter=silent
 
-      - name: Format
-        run: pnpm run nps format.ci
-
-      - name: Build
-        run: pnpm run nps build
+      - name: Validate
+        run: pnpm run nps validate.ci
