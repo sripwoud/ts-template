@@ -1,15 +1,14 @@
-name: Code Quality
+name: Snyk Security Check
 on:
   pull_request:
     branches: [main]
+    path-ignores: ['**/*md', '**/*yaml', '**/*yml']
 
 jobs:
-  lint-format-build:
+  security:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@main
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -40,5 +39,7 @@ jobs:
       - name: Install
         run: pnpm i --ignore-scripts --reporter=silent
 
-      - name: Validate
-        run: pnpm run nps validate.ci
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
