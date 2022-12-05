@@ -1,5 +1,9 @@
 name: Snyk Security Check
-on: [push, pull_request]
+on:
+  pull_request:
+    branches: [main]
+    path-ignores: ['**/*md', '**/*yaml', '**/*yml']
+
 jobs:
   security:
     runs-on: ubuntu-latest
