@@ -4,8 +4,8 @@ on:
   # pull_request required to get PR comments
   pull_request:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths-ignore: ['**/*md', '**/*yaml', '**/*yml']
 
 jobs:
   coveralls:
