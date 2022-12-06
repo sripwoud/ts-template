@@ -6,9 +6,9 @@ const jestConfig: JestConfigWithTsJest = {
   ...common,
   clearMocks: true,
   collectCoverage: true,
-  collectCoverageFrom: ['src/**'],
+  collectCoverageFrom: ['<rootDir>/src/**'],
   coverageDirectory: 'coverage',
-  coveragePathIgnorePatterns: ['./src/index.ts'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/index.ts'],
   coverageThreshold: {
     global: {
       branches: 70,
@@ -17,7 +17,17 @@ const jestConfig: JestConfigWithTsJest = {
       statements: 70,
     },
   },
-  projects: ['./test/jest.lint.ts', './test/jest.unit.ts'],
+  projects: [
+    './test/jest.lint.ts',
+    './test/jest.prettier.ts',
+    './test/jest.unit.ts',
+  ],
+  watchPlugins: [
+    'jest-watch-select-projects',
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
+  //  TODO add prettier runner
 }
 
 export default jestConfig

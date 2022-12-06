@@ -1,10 +1,8 @@
 import type { JestConfigWithTsJest } from 'ts-jest'
 
-import common from './jest.common'
-
 const jestLintConfig: JestConfigWithTsJest = {
-  ...common,
   displayName: 'lint',
+  rootDir: '..',
   runner: 'jest-runner-eslint',
   testMatch: ['<rootDir>/**/*ts'],
 }

@@ -1,0 +1,47 @@
+import type { JestConfigWithTsJest } from 'ts-jest'
+
+const jestLintConfig: JestConfigWithTsJest = {
+  displayName: 'prettier',
+  moduleFileExtensions: [
+    'js',
+    'mjs',
+    'jsx',
+    'vue',
+    'ts',
+    'tsx',
+    'css',
+    'less',
+    'scss',
+    'html',
+    'json',
+    'graphql',
+    'md',
+    'markdown',
+    'mdx',
+    'yaml',
+    'yml',
+  ],
+  runner: 'jest-runner-prettier',
+  testMatch: [
+    '**/*.js',
+    '**/*.mjs',
+    '**/*.jsx',
+    '**/*.vue',
+    '**/*.ts',
+    '**/*.tsx',
+    '**/*.css',
+    '**/*.less',
+    '**/*.scss',
+    '**/*.html',
+    '**/*.json',
+    '**/*.graphql',
+    '**/*.md',
+    '**/*.markdown',
+    '**/*.mdx',
+    '**/*.yaml',
+    '**/*.yml',
+    '!**/coverage/**',
+  ],
+}
+
+export default jestLintConfig
