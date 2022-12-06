@@ -39,10 +39,10 @@ scripts:
       script: is-ci && nps lint.ci || nps lint.check
       description: Check for lint errors
     check:
-      script: eslint . --ext .ts
+      script: jest --config test/jest.lint.ts
       hiddenFromHelp: true
     fix:
-      script: nps 'lint.check --fix'
+      script: eslint . --ext .ts --fix
       hiddenFromHelp: true
     ci:
       script: nps 'lint.check --quiet'
@@ -71,7 +71,7 @@ scripts:
       script: nps 'test.once --silent --reporters=jest-silent-reporter'
       hiddenFromHelp: true
     debug:
-      script: node --inspect-brk ./node_modules/jest/bin/jest --runInBand --watch --config test/jest.config.ts
+      script: node --inspect-brk ./node_modules/jest/bin/jest --runInBand --watch --config test/jest.unit.ts
       description: Start tests in debug mode (open in chrome://inspect)
     once:
       script: jest --config test/jest.config.ts
@@ -85,7 +85,7 @@ scripts:
       script: is-ci && nps validate.ci || nps validate.local
       description: Perform static analysis testing (lint, format...)
     local:
-      script: concurrently tsc 'nps test.once' 'nps format.check' 'nps lint.check'
+      script: concurrently tsc 'nps test.once' 'nps format.check'
       hiddenFromHelp: true
     ci:
       script: concurrently tsc 'nps format' 'nps lint' # test run by coveralls action

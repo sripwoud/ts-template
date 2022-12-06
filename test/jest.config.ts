@@ -1,14 +1,14 @@
 import type { JestConfigWithTsJest } from 'ts-jest'
-import { pathsToModuleNameMapper } from 'ts-jest'
 
-import { compilerOptions } from '../tsconfig.json'
+import common from './jest.common'
 
 const jestConfig: JestConfigWithTsJest = {
+  ...common,
   clearMocks: true,
   collectCoverage: true,
   collectCoverageFrom: ['src/**'],
   coverageDirectory: 'coverage',
-  coveragePathIgnorePatterns: ['src/index.ts'],
+  coveragePathIgnorePatterns: ['./src/index.ts'],
   coverageThreshold: {
     global: {
       branches: 70,
@@ -17,15 +17,7 @@ const jestConfig: JestConfigWithTsJest = {
       statements: 70,
     },
   },
-  moduleDirectories: ['node_modules', __dirname],
-  moduleFileExtensions: ['ts', 'js', 'json'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/',
-  }),
-  preset: 'ts-jest',
-  rootDir: '..',
-  setupFilesAfterEnv: ['./test/setup.ts'],
-  verbose: true,
+  projects: ['./test/jest.lint.ts', './test/jest.unit.ts'],
 }
 
 export default jestConfig
