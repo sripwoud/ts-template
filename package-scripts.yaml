@@ -68,7 +68,7 @@ scripts:
       script: is-ci && nps test.ci || nps test.watch
       description: Run tests
     ci:
-      script: nps 'test.once --silent --reporters=jest-silent-reporter'
+      script: jest --config test/jest.unit-ts --silent --reporters=jest-silent-reporter
       hiddenFromHelp: true
     debug:
       script: node --inspect-brk ./node_modules/jest/bin/jest --runInBand --watch --config test/jest.unit.ts
