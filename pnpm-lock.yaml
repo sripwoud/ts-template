@@ -13,6 +13,7 @@ specifiers:
   jest-mock-extended: ^3.0.1
   jest-runner-eslint: ^1.1.0
   jest-silent-reporter: ^0.5.0
+  jest-watch-select-projects: ^2.0.0
   lint-staged: ^13.1.0
   module-alias: ^2.2.2
   nps: ^5.10.0
@@ -40,6 +41,7 @@ devDependencies:
   jest-mock-extended: 3.0.1_4f6uxrzmuwipl5rr3bcogf6k74
   jest-runner-eslint: 1.1.0_eslint@8.28.0+jest@29.3.1
   jest-silent-reporter: 0.5.0
+  jest-watch-select-projects: 2.0.0
   lint-staged: 13.1.0
   reflect-metadata: 0.1.13
   supertest: 6.3.1
@@ -3243,6 +3245,14 @@ packages:
       jest-get-type: 29.2.0
       leven: 3.1.0
       pretty-format: 29.3.1
+    dev: true
+
+  /jest-watch-select-projects/2.0.0:
+    resolution: {integrity: sha512-j00nW4dXc2NiCW6znXgFLF9g8PJ0zP25cpQ1xRro/HU2GBfZQFZD0SoXnAlaoKkIY4MlfTMkKGbNXFpvCdjl1w==}
+    dependencies:
+      ansi-escapes: 4.3.2
+      chalk: 3.0.0
+      prompts: 2.4.2
     dev: true
 
   /jest-watcher/29.3.1:

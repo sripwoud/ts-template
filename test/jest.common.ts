@@ -11,6 +11,7 @@ const jestCommonConfig: JestConfigWithTsJest = {
   }),
   preset: 'ts-jest',
   rootDir: '..',
+  watchPlugins: ['jest-watch-select-projects'],
 }
 
 export default jestCommonConfig
