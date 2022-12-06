@@ -6,8 +6,9 @@ import { compilerOptions } from '../tsconfig.json'
 const jestConfig: JestConfigWithTsJest = {
   clearMocks: true,
   collectCoverage: true,
-  collectCoverageFrom: ['src'],
+  collectCoverageFrom: ['src/**'],
   coverageDirectory: 'coverage',
+  coveragePathIgnorePatterns: ['src/index.ts'],
   coverageThreshold: {
     global: {
       branches: 70,
