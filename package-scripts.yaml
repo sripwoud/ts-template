@@ -53,6 +53,9 @@ scripts:
       hiddenFromHelp: true
 
   test:
+    debug:
+      script: node --inspect-brk ./node_modules/jest/bin/jest --runInBand --watch --config test/jest.config.ts
+      description: Start tests in debug mode (open in chrome://inspect)
     default:
       script: jest --config test/jest.config.ts
       description: Run tests
