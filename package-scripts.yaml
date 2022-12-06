@@ -15,24 +15,35 @@ scripts:
     script: tsc -p tsconfig.compile.json
     hiddenFromHelp: true
 
+  fix:
+    default:
+      script: nps lint.fix format.fix
+      hiddenFromHelp: Fix linting and formatting errors
+
   format:
+    default:
+      script: is-ci && nps format.ci || nps format.check
+      description: Check for format errors
     check:
       script: prettier --check .
       hiddenFromHelp: true
     fix:
       script: prettier --write .
-      description: Format files
+      hiddenFromHelp: true
     ci:
       script: nps 'format.check --loglevel warn'
       hiddenFromHelp: true
 
   lint:
+    default:
+      script: is-ci && nps lint.ci || nps lint.check
+      description: Check for lint errors
     check:
       script: eslint . --ext .ts
-      description: Check for lint errors
+      hiddenFromHelp: true
     fix:
       script: nps 'lint.check --fix'
-      description: Fix lint errors
+      hiddenFromHelp: true
     ci:
       script: nps 'lint.check --quiet'
       hiddenFromHelp: true
@@ -53,23 +64,29 @@ scripts:
       hiddenFromHelp: true
 
   test:
+    default:
+      script: is-ci && nps test.ci || nps test.watch
+      description: Run tests
+    ci:
+      script: nps 'test.once --silent --reporters=jest-silent-reporter'
+      hiddenFromHelp: true
     debug:
       script: node --inspect-brk ./node_modules/jest/bin/jest --runInBand --watch --config test/jest.config.ts
       description: Start tests in debug mode (open in chrome://inspect)
-    default:
+    once:
       script: jest --config test/jest.config.ts
-      description: Run tests
+      hiddenFromHelp: true
     watch:
-      script: nps 'test --watch --coverage=false'
-      description: Run tests (watch)
-    ci:
-      script: nps 'test --silent --reporters=jest-silent-reporter'
+      script: nps 'test.once --watch --coverage=false'
       hiddenFromHelp: true
 
   validate:
     default:
-      script: concurrently tsc 'nps test' 'nps format.check' 'nps lint.check'
+      script: is-ci && nps validate.ci || nps validate.local
       description: Perform static analysis testing (lint, format...)
+    local:
+      script: concurrently tsc 'nps test.once' 'nps format.check' 'nps lint.check'
+      hiddenFromHelp: true
     ci:
-      script: concurrently tsc 'nps format.ci' 'nps lint.ci' # test run by coveralls action
+      script: concurrently tsc 'nps format' 'nps lint' # test run by coveralls action
       hiddenFromHelp: true

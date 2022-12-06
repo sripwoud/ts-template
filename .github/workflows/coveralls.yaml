@@ -46,7 +46,7 @@ jobs:
           pnpm i --ignore-scripts --reporter=silent
 
       - name: Test
-        run: pnpm run nps test.ci
+        run: pnpm run nps t
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
