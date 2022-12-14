@@ -1,5 +1,6 @@
 {
   "include": ["src", "test"],
+  "exclude": ["test/coverage"],
   "compilerOptions": {
     "noEmit": true,
     "baseUrl": ".",
