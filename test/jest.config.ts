@@ -1,6 +1,9 @@
 import type { JestConfigWithTsJest } from 'ts-jest'
 
 const jestConfig: JestConfigWithTsJest = {
+  collectCoverage: true,
+  collectCoverageFrom: ['<rootDir>/src/**'],
+  coverageDirectory: 'coverage',
   projects: [
     './test/jest.lint.ts',
     './test/jest.prettier.ts',
@@ -11,7 +14,6 @@ const jestConfig: JestConfigWithTsJest = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
-  //  TODO add prettier runner
 }
 
 export default jestConfig
