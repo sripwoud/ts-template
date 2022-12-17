@@ -22,35 +22,18 @@ scripts:
 
   format:
     default:
-      script: nps 'isci "nps format.ci" "nps format.check"'
+      script: nps 'test.once --selectProjects prettier --coverage false'
       description: Check for format errors
-    check:
-      script: jest --config test/jest.prettier.ts
-      hiddenFromHelp: true
     fix:
       script: prettier --write .
-      hiddenFromHelp: true
-    ci:
-      script: nps 'format.check --loglevel warn'
-      hiddenFromHelp: true
-
-  isci:
-    default:
-      script: sh is-ci.sh
       hiddenFromHelp: true
 
   lint:
     default:
-      script: nps 'isci "nps lint.ci" "nps lint.check"'
+      script: nps 'test.once --selectProjects lint --coverage false'
       description: Check for lint errors
-    check:
-      script: jest --config test/jest.lint.ts
-      hiddenFromHelp: true
     fix:
       script: eslint . --ext .ts --fix
-      hiddenFromHelp: true
-    ci:
-      script: nps 'lint.check --quiet'
       hiddenFromHelp: true
 
   precommit:
@@ -70,28 +53,22 @@ scripts:
 
   test:
     default:
-      script: nps 'isci "nps test.ci" "nps test.watch"'
-      description: Run tests
+      script: nps 'test.once --watch --coverage=false'
+      description: Run tests (watch, no coverage)
     ci:
-      script: jest --config test/jest.unit-ts --silent --reporters=jest-silent-reporter
+      script: jest --config test/jest.config.ts --selectProjects unit --silent --reporters=jest-silent-reporter
       hiddenFromHelp: true
     debug:
       script: node --inspect-brk ./node_modules/jest/bin/jest --runInBand --watch --config test/jest.unit.ts
       description: Start tests in debug mode (open in chrome://inspect)
     once:
       script: jest --config test/jest.config.ts
-      hiddenFromHelp: true
-    watch:
-      script: nps 'test.once --watch --coverage=false'
-      hiddenFromHelp: true
+      description: Run tests (once, coverage)
 
   validate:
     default:
-      script: nps 'isci "nps validate.ci" "nps validate.local"'
-      description: Perform static analysis testing (lint, format...)
-    local:
       script: concurrently tsc 'nps test.once'
-      hiddenFromHelp: true
+      description: Perform static analysis testing (lint, format...)
     ci:
-      script: concurrently tsc 'nps format' 'nps lint' # test run by coveralls action
+      script: concurrently tsc 'jest --config test/jest.config.ts --selectProjects prettier lint --silent --reporters=jest-silent-reporter --coverage false'
       hiddenFromHelp: true
