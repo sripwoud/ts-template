@@ -22,7 +22,7 @@ scripts:
 
   format:
     default:
-      script: is-ci && nps format.ci || nps format.check
+      script: nps 'isci "nps format.ci" "nps format.check"'
       description: Check for format errors
     check:
       script: jest --config test/jest.prettier.ts
@@ -34,9 +34,14 @@ scripts:
       script: nps 'format.check --loglevel warn'
       hiddenFromHelp: true
 
+  isci:
+    default:
+      script: sh is-ci.sh
+      hiddenFromHelp: true
+
   lint:
     default:
-      script: is-ci && nps lint.ci || nps lint.check
+      script: nps 'isci "nps lint.ci" "nps lint.check"'
       description: Check for lint errors
     check:
       script: jest --config test/jest.lint.ts
@@ -65,7 +70,7 @@ scripts:
 
   test:
     default:
-      script: is-ci && nps test.ci || nps test.watch
+      script: nps 'isci "nps test.ci" "nps test.watch"'
       description: Run tests
     ci:
       script: jest --config test/jest.unit-ts --silent --reporters=jest-silent-reporter
@@ -82,7 +87,7 @@ scripts:
 
   validate:
     default:
-      script: is-ci && nps validate.ci || nps validate.local
+      script: nps 'isci "nps validate.ci" "nps validate.local"'
       description: Perform static analysis testing (lint, format...)
     local:
       script: concurrently tsc 'nps test.once'

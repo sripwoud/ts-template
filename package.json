@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "nps": "nps",
-    "prepare": "husky install",
-    "isci": "is-ci && echo ci || echo notci"
+    "prepare": "husky install"
   },
   "_moduleAliases": {
     "@mod": "dist/mod"
