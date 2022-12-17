@@ -1,5 +1,8 @@
 name: Snyk Security Check
 on:
+  push:
+    branches: [main]
+    path-ignores: ['**/*md', '**/*yaml', '**/*yml']
   pull_request:
     branches: [main]
     path-ignores: ['**/*md', '**/*yaml', '**/*yml']

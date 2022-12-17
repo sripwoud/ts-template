@@ -4,8 +4,7 @@
 </div>
 <br/>
 
-![Code Quality Status](https://img.shields.io/github/workflow/status/r1oga/ts-template/Code%20Quality?label=Code%20Quality)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/r1oga/ts-template/Snyk%20Security%20Check?label=Security%20%28Snyk%29)
+![Code Quality GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/r1oga/ts-template/code-quality.yaml?branch=main&label=Code%20Quality) ![Security Check GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/r1oga/ts-template/snyk.yaml?branch=main&label=Security%20%28Snyk%29)
 [![Coverage Status](https://coveralls.io/repos/github/r1oga/ts-template/badge.svg?branch=main)](https://coveralls.io/github/r1oga/ts-template?branch=main)  
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)  
 [![nps friendly](https://img.shields.io/badge/nps-friendly-blue.svg?style=flat-square)](https://github.com/sezna/nps)
