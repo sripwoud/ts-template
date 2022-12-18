@@ -1,11 +1,11 @@
-name: Snyk Security Check
+name: Snyk Security Checks
 on:
   push:
     branches: [main]
-    path-ignores: ['**/*md', '**/*yaml', '**/*yml']
+    paths-ignore: ['**/*md', '**/*yaml', '**/*yml']
   pull_request:
     branches: [main]
-    path-ignores: ['**/*md', '**/*yaml', '**/*yml']
+    paths-ignore: ['**/*md', '**/*yaml', '**/*yml']
 
 jobs:
   security:
