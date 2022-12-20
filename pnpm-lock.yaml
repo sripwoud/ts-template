@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@r1oga/eslint-config': ^1.1.2
-  '@r1oga/prettier-config': ^1.1.5
+  '@r1oga/eslint-config': ^1.1.5
+  '@r1oga/prettier-config': ^1.1.8
   '@types/jest': ^29.2.3
   '@types/supertest': ^2.0.12
   barrelsby: ^2.5.1
@@ -34,8 +34,8 @@ dependencies:
   nps: 5.10.0
 
 devDependencies:
-  '@r1oga/eslint-config': 1.1.2_bh7fyjwf3qvjuxqkkpsm2qjvfa
-  '@r1oga/prettier-config': 1.1.5_prettier@2.8.1
+  '@r1oga/eslint-config': 1.1.5_bh7fyjwf3qvjuxqkkpsm2qjvfa
+  '@r1oga/prettier-config': 1.1.8_prettier@2.8.1
   '@types/jest': 29.2.3
   '@types/supertest': 2.0.12
   husky: 8.0.2
@@ -843,8 +843,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@r1oga/eslint-config/1.1.2_bh7fyjwf3qvjuxqkkpsm2qjvfa:
-    resolution: {integrity: sha512-uLIqFtp/42o1ZqIidR93PrjPJdaQ6nti2GB8hsilPsal32I0hNMnfvjiS0BaLN7VL+DQxk4LdNQkhL1hxdXUvw==}
+  /@r1oga/eslint-config/1.1.5_bh7fyjwf3qvjuxqkkpsm2qjvfa:
+    resolution: {integrity: sha512-DgS18CIDl4Ko5cgb4smJcCwulTbuovCyQNZRssvZRky4K+CVGyYp0usDDhwKc4R3+HvihDWJgdqChMjVmbUxBg==}
     requiresBuild: true
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.46.1
@@ -870,8 +870,8 @@ packages:
       eslint-plugin-sort: 2.4.0_f5jcydormhcqaoeadqwgqigppy
     dev: true
 
-  /@r1oga/prettier-config/1.1.5_prettier@2.8.1:
-    resolution: {integrity: sha512-h9Sza3jBSoBFmGciCpQ8UBhGkepX9pobwi76Y8f+S7Olo24Sa352gFZoMfPFRw9l6HK0vnh/V+d61bl/mOTdAA==}
+  /@r1oga/prettier-config/1.1.8_prettier@2.8.1:
+    resolution: {integrity: sha512-mXKaT8+f/jdbi1QFikIUk9HWfICy9iOkZqqVw4KvdQFkMpyE5SlpD8gQQ0lk8jOGQkO3fV6uIqwywdk9Y+56EQ==}
     requiresBuild: true
     peerDependencies:
       prettier: ^2.8.1
