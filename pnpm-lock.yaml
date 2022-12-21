@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@r1oga/eslint-config': ^1.1.5
+  '@r1oga/eslint-config': ^1.1.6
   '@r1oga/prettier-config': ^1.1.8
   '@types/jest': ^29.2.3
   '@types/supertest': ^2.0.12
@@ -34,7 +34,7 @@ dependencies:
   nps: 5.10.0
 
 devDependencies:
-  '@r1oga/eslint-config': 1.1.5_bh7fyjwf3qvjuxqkkpsm2qjvfa
+  '@r1oga/eslint-config': 1.1.6_bh7fyjwf3qvjuxqkkpsm2qjvfa
   '@r1oga/prettier-config': 1.1.8_prettier@2.8.1
   '@types/jest': 29.2.3
   '@types/supertest': 2.0.12
@@ -843,8 +843,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@r1oga/eslint-config/1.1.5_bh7fyjwf3qvjuxqkkpsm2qjvfa:
-    resolution: {integrity: sha512-DgS18CIDl4Ko5cgb4smJcCwulTbuovCyQNZRssvZRky4K+CVGyYp0usDDhwKc4R3+HvihDWJgdqChMjVmbUxBg==}
+  /@r1oga/eslint-config/1.1.6_bh7fyjwf3qvjuxqkkpsm2qjvfa:
+    resolution: {integrity: sha512-C13DL0mkmaMvpM1b5GDv+Z8TRafFUXqsL62jjm6Ek5zQEf77UAskZ5umvERBKVNwYsRWCI0h9GiOHvw0zwBu8g==}
     requiresBuild: true
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.46.1

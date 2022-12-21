@@ -13,7 +13,7 @@
   "author": "r1oga",
   "license": "ISC",
   "devDependencies": {
-    "@r1oga/eslint-config": "^1.1.5",
+    "@r1oga/eslint-config": "^1.1.6",
     "@r1oga/prettier-config": "^1.1.8",
     "@types/jest": "^29.2.3",
     "@types/supertest": "^2.0.12",
