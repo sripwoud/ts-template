@@ -25,13 +25,16 @@
 | Security Checks                       | [Snyk](https://snyk.io/)                                                                                                    | [snyk.yaml](./.github/workflows/snyk.yaml)                                                                                                                                                                                                |
 
 ## Start
+
 Node
+
 ```commandline
 npm run setup
 nps start
 ```
 
 Docker
+
 ```commandline
 docker compose up
 ```
