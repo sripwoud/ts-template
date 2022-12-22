@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "nps": "nps",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "setup": "pnpm 2> /dev/null || npm i -g pnpm && pnpm i"
   },
   "_moduleAliases": {
     "@mod": "dist/mod"

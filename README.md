@@ -23,3 +23,15 @@
 | Containerization                      | [Docker](https://www.docker.com/)                                                                                           | [Dockerfile](./Dockerfile), [docker-compose.yaml](./docker-compose.yaml)                                                                                                                                                                  |
 | Pre-commit hook (linting, formatting) | [Husky](https://typicode.github.io/husky), [lint-staged](https://github.com/okonet/lint-staged)                             | [pre-commit](./.husky/pre-commit), [.lintstagedrc.yaml](./.lintstagedrc.yaml)                                                                                                                                                             |
 | Security Checks                       | [Snyk](https://snyk.io/)                                                                                                    | [snyk.yaml](./.github/workflows/snyk.yaml)                                                                                                                                                                                                |
+
+## Start
+Node
+```commandline
+npm run setup
+nps start
+```
+
+Docker
+```commandline
+docker compose up
+```
