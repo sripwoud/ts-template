@@ -36,7 +36,7 @@ jobs:
           restore-keys: ${{ runner.os }}-pnpm-store-
 
       - name: Install
-        run: pnpm i --ignore-scripts --reporter=silent
+        run: pnpm i --ignore-scripts
 
       - name: Validate
         run: pnpm run nps v.ci
