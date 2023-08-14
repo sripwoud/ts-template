@@ -1,4 +1,3 @@
-#
 FROM node:19-alpine as build
 
 RUN apk update
