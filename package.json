@@ -23,7 +23,7 @@
     "test": "turbo run _test --cache-dir=.turbo",
     "test.watch": "pnpm _test --watch --coverage=false",
     "_test": "jest --config test/jest.config.ts",
-    "validate": "turbo _format.check _lint.check _test --cache-dir=.turbo"
+    "validate": "turbo _format.check _lint.check --cache-dir=.turbo"
   },
   "_moduleAliases": {
     "@mod": "dist/mod"
