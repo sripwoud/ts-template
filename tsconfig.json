@@ -1,26 +1,13 @@
 {
-  "include": [
-    "src",
-    "test"
-  ],
-  "exclude": [
-    "test/coverage"
-  ],
+  "include": ["src", "test"],
+  "exclude": ["test/coverage"],
   "extends": "@sripwoud/tsconfig",
-  "files": [
-    "node_modules/jest-chain/types/index.d.ts"
-  ],
+  "files": ["node_modules/jest-chain/types/index.d.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@mod": [
-        "src/mod"
-      ],
-      "@mod/*": [
-        "src/mod/*"
-      ]
-    },
-    "resolveJsonModule": true
+      "@mod": ["src/mod"],
+      "@mod/*": ["src/mod/*"]
+    }
   }
 }
-

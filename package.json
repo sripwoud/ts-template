@@ -16,7 +16,7 @@
   "devDependencies": {
     "@r1oga/eslint-config": "1.1.8",
     "@r1oga/prettier-config": "1.1.11",
-    "@sripwoud/tsconfig": "^1.0.0",
+    "@sripwoud/tsconfig": "^1.1.0",
     "@types/jest": "^29.2.3",
     "@types/supertest": "^2.0.12",
     "husky": "^8.0.2",
