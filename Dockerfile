@@ -13,14 +13,14 @@ COPY .npmrc package.json pnpm-lock.yaml ./
 RUN pnpm i -P --frozen-lockfile --ignore-scripts --reporter=silent
 RUN pnpm i reflect-metadata ts-node-dev tsconfig-paths tslib typescript
 
-COPY .env package-scripts.yaml tsconfig.json tsconfig.compile.json .barrelsby.json ./
+COPY .env tsconfig.json tsconfig.compile.json .barrelsby.json ./
 COPY src src
 
 COPY scripts/secrets-entrypoint.sh /usr/local/bin/secrets-entrypoint.sh
 RUN chmod +x /usr/local/bin/secrets-entrypoint.sh
 ENTRYPOINT ["secrets-entrypoint.sh"]
 
-RUN nps build
+RUN pnpm build
 
-CMD ["nps", "start.prod"]
+CMD ["pnpm", "start.prod"]
 
