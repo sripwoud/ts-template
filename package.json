@@ -2,6 +2,10 @@
   "name": "ts-template",
   "scripts": {
     "barrels": "barrelsby --config .barrelsby.json",
+    "_build": "pnpm barrels && rm -rf dist && tsc --project tsconfig.compile.json",
+    "build": "turbo run _build",
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "fix": "turbo _format _lint",
     "_lint": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
     "lint": "turbo run _lint",
     "_lint.check": "eslint --ext .js,.jsx,.ts,.tsx .",
@@ -12,7 +16,14 @@
     "format.check": "turbo run _format.check",
     "precommit": "tsc && pnpm barrels && lint-staged",
     "prepare": "husky install",
-    "setup": "pnpm 2> /dev/null || npm i -g pnpm && pnpm i"
+    "setup": "pnpm 2> /dev/null || npm i -g pnpm && pnpm i",
+    "start": "pnpm build && pnpm start.prod",
+    "start.dev": "NODE_ENV=development tsnd --cls --exit-child --ignore-watch node_modules --quiet  --respawn --rs --transpile-only -r tsconfig-paths/register src",
+    "start.prod": "NODE_ENV=production node -r module-alias/register dist",
+    "test": "turbo run _test",
+    "test.watch": "pnpm _test --watch --coverage=false",
+    "_test": "jest --config test/jest.config.ts",
+    "validate": "turbo _format.check _lint.check _test"
   },
   "_moduleAliases": {
     "@mod": "dist/mod"

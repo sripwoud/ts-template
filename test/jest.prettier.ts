@@ -29,6 +29,7 @@ const jestLintConfig: JestConfigWithTsJest = {
   testPathIgnorePatterns: [
     '<rootDir>/pnpm-lock.yaml',
     '<rootDir>/test/coverage',
+    '<rootDir>/dist',
   ],
 }
 
