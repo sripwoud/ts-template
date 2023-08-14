@@ -10,3 +10,5 @@ coverage
 .idea
 
 .env
+
+.turbo

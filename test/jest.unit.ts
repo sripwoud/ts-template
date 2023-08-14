@@ -1,6 +1,6 @@
+import assert from 'assert'
 import type { JestConfigWithTsJest } from 'ts-jest'
 import { pathsToModuleNameMapper } from 'ts-jest'
-import assert from 'assert'
 import { compilerOptions } from '../tsconfig.json'
 import common from './jest.common'
 

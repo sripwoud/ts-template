@@ -1,4 +1,4 @@
-name: Coverage Report
+name: Test Coverage
 on:
   # push trigger required to get coveralls monitoring of default branch
   # pull_request required to get PR comments
@@ -9,7 +9,7 @@ on:
     paths-ignore: ['**/*md', '**/*yaml', '**/*yml']
 
 jobs:
-  coveralls:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -40,11 +40,19 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-pnpm-store-
 
+      - name: Setup turbo cache
+        id: turbo-cache
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: turbo-${{ github.job }}-${{ github.ref_name }}-
+
       - name: Install
         run: pnpm i --ignore-scripts --reporter=silent
 
       - name: Test
-        run: pnpm run nps t.ci
+        run: pnpm test
 
       - name: Coveralls
         uses: coverallsapp/github-action@master

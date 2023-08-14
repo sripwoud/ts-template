@@ -1,18 +1,33 @@
 {
   "name": "ts-template",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "nps": "nps",
+    "barrels": "barrelsby --config .barrelsby.json",
+    "_build": "pnpm barrels && rm -rf dist && tsc --project tsconfig.compile.json",
+    "build": "turbo run _build",
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "fix": "turbo _format _lint",
+    "_lint": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
+    "lint": "turbo run _lint",
+    "_lint.check": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "lint.check": "turbo run _lint.check",
+    "_format": "prettier --write .",
+    "format": "turbo run _format",
+    "_format.check": "prettier --check .",
+    "format.check": "turbo run _format.check",
+    "precommit": "tsc && pnpm barrels && lint-staged",
     "prepare": "husky install",
-    "setup": "pnpm 2> /dev/null || npm i -g pnpm && pnpm i"
+    "setup": "pnpm 2> /dev/null || npm i -g pnpm && pnpm i",
+    "start": "pnpm build && pnpm start.prod",
+    "start.dev": "NODE_ENV=development tsnd --cls --exit-child --ignore-watch node_modules --quiet  --respawn --rs --transpile-only -r tsconfig-paths/register src",
+    "start.prod": "NODE_ENV=production node -r module-alias/register dist",
+    "test": "turbo run _test --cache-dir=.turbo",
+    "test.watch": "pnpm _test --watch --coverage=false",
+    "_test": "jest --config test/jest.config.ts",
+    "validate": "turbo _format.check _lint.check --cache-dir=.turbo"
   },
   "_moduleAliases": {
     "@mod": "dist/mod"
   },
-  "author": "r1oga",
-  "license": "ISC",
   "devDependencies": {
     "@r1oga/eslint-config": "1.1.8",
     "@r1oga/prettier-config": "1.1.11",
@@ -36,13 +51,13 @@
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.1.0",
     "tslib": "^2.4.1",
+    "turbo": "^1.10.12",
     "typescript": "^4.9.4"
   },
   "dependencies": {
     "barrelsby": "^2.5.1",
     "concurrently": "^7.6.0",
-    "module-alias": "^2.2.2",
-    "nps": "^5.10.0"
+    "module-alias": "^2.2.2"
   },
   "engines": {
     "node": ">=19"

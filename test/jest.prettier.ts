@@ -1,5 +1,4 @@
 import type { JestConfigWithTsJest } from 'ts-jest'
-
 import common from './jest.common'
 
 const jestLintConfig: JestConfigWithTsJest = {
@@ -30,6 +29,7 @@ const jestLintConfig: JestConfigWithTsJest = {
   testPathIgnorePatterns: [
     '<rootDir>/pnpm-lock.yaml',
     '<rootDir>/test/coverage',
+    '<rootDir>/dist',
   ],
 }
 
