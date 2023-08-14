@@ -20,10 +20,10 @@
     "start": "pnpm build && pnpm start.prod",
     "start.dev": "NODE_ENV=development tsnd --cls --exit-child --ignore-watch node_modules --quiet  --respawn --rs --transpile-only -r tsconfig-paths/register src",
     "start.prod": "NODE_ENV=production node -r module-alias/register dist",
-    "test": "turbo run _test",
+    "test": "turbo run _test --cache-dir=.turbo",
     "test.watch": "pnpm _test --watch --coverage=false",
     "_test": "jest --config test/jest.config.ts",
-    "validate": "turbo _format.check _lint.check _test"
+    "validate": "turbo _format.check _lint.check _test --cache-dir=.turbo"
   },
   "_moduleAliases": {
     "@mod": "dist/mod"
