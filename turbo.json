@@ -1,22 +1,22 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "//_format.check": {
+    "_format.check": {
       "inputs": [
         "*.{cjs,js,jsx,ts,tsx,yaml,yml,json,md,mdx,css,html,graphql}",
         "{src,test}/**/*.{cjs,js,jsx,ts,tsx,yaml,yml,json,md,mdx,css,html,graphql}"
       ]
     },
-    "//_format": {
+    "_format": {
       "inputs": [
         "*.{cjs,js,jsx,ts,tsx,yaml,yml,json,md,mdx,css,html,graphql}",
         "{src,test}/**/*.{cjs,js,jsx,ts,tsx,yaml,yml,json,md,mdx,css,html,graphql}"
       ]
     },
-    "//_lint.check": {
+    "_lint.check": {
       "inputs": ["*.{js,jsx,ts,tsx}", "{src,test}/**/*.{js,jsx,ts,tsx}"]
     },
-    "//_lint": {
+    "_lint": {
       "inputs": ["*.{js,jsx,ts,tsx}", "{src,test}/**/*.{js,jsx,ts,tsx}"]
     }
   }
