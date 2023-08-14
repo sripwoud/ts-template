@@ -29,7 +29,7 @@ Node
 
 ```commandline
 npm run setup
-nps start
+pnpm start
 ```
 
 Docker
