@@ -25,6 +25,9 @@ devDependencies:
   '@r1oga/prettier-config':
     specifier: 1.1.11
     version: 1.1.11(prettier@2.8.7)
+  '@sripwoud/tsconfig':
+    specifier: ^1.0.0
+    version: 1.0.0
   '@types/jest':
     specifier: ^29.2.3
     version: 29.2.3
@@ -956,6 +959,10 @@ packages:
     resolution: {integrity: sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==}
     dependencies:
       '@sinonjs/commons': 1.8.6
+    dev: true
+
+  /@sripwoud/tsconfig@1.0.0:
+    resolution: {integrity: sha512-G6RQSWyoZ4CyLwxQxKU4iyxkkaako8ptuzEKBZXgzRNIk9EpQ3Y/BwPP/eQ1tGvdHvW/vmdlSo/nMwA4oROYgw==}
     dev: true
 
   /@tootallnate/once@1.1.2:
