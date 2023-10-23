@@ -12,3 +12,5 @@ coverage
 
 # JetBrains IDE
 .idea
+
+.turbo

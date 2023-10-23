@@ -55,13 +55,5 @@
   },
   "engines": {
     "node": ">=19"
-  },
-  "jest-runner-eslint": {
-    "cliOptions": {
-      "ignorePath": "./.eslintignore"
-    }
-  },
-  "jest-runner-tsc": {
-    "tsconfigPath": "./tsconfig.json"
   }
 }
