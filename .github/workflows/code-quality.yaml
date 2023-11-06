@@ -11,29 +11,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 19
-
-      - uses: pnpm/action-setup@v2.2.4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-pnpm-store-
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Setup turbo cache
         id: turbo-cache
@@ -44,7 +23,7 @@ jobs:
           restore-keys: turbo-${{ github.job }}-${{ github.ref_name }}-
 
       - name: Install
-        run: pnpm i --ignore-scripts
+        run: bun install
 
       - name: Validate
-        run: pnpm validate
+        run: bun run validate
