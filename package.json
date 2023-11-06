@@ -21,10 +21,10 @@
     "start.prod": "bun dist/src/index.js",
     "test": "turbo run _test --cache-dir=.turbo",
     "test.watch": "bun run _test --watch --coverage=false",
-    "_test": "jest --config test/jest.config.ts",
+    "_test": "bun test",
     "_typecheck": "tsc",
     "typecheck": "turbo run _typecheck",
-    "validate": "turbo _format.check _lint.check --cache-dir=.turbo"
+    "validate": "turbo _typecheck _format.check _lint.check --cache-dir=.turbo"
   },
   "_moduleAliases": {
     "@mod": "dist/mod"
@@ -33,17 +33,11 @@
     "@sripwoud/eslint-config": "^1.0.4",
     "@sripwoud/prettier-config": "^1.0.4",
     "@sripwoud/tsconfig": "^1.1.0",
-    "@types/jest": "^29.5.6",
     "bun-types": "^1.0.9",
     "husky": "^8.0.2",
     "is-ci": "^3.0.1",
-    "jest": "^29.7.0",
-    "jest-chain": "^1.1.6",
-    "jest-extended": "^4.0.2",
-    "jest-watch-typeahead": "^2.2.2",
     "lint-staged": "^13.1.0",
     "reflect-metadata": "^0.1.13",
-    "ts-jest": "^29.1.1",
     "turbo": "^1.10.12",
     "typescript": "^5.2.2"
   },
