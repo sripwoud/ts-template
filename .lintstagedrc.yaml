@@ -1,4 +1,2 @@
-'*.+(js|jsx|ts|tsx)':
-  - eslint --fix .
-'*.+(js|json|jsx|ts|tsx|yaml|yml)':
-  - prettier --write .
+'*.+(js|json|jsx|ts|tsx)':
+  - biome check --apply .

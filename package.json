@@ -1,47 +1,38 @@
 {
-  "name": "ts-template",
-  "scripts": {
-    "barrels": "barrelsby --config .barrelsby.json",
-    "_build": "bun run barrels && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
-    "build": "turbo run _build",
-    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
-    "fix": "turbo _format _lint",
-    "_lint": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
-    "lint": "turbo run _lint",
-    "_lint.check": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "lint.check": "turbo run _lint.check",
-    "_format": "prettier --write .",
-    "format": "turbo run _format",
-    "_format.check": "prettier --check .",
-    "format.check": "turbo run _format.check",
-    "precommit": "tsc && bun run barrels && lint-staged",
-    "prepare": "husky install",
-    "start": "bun run build && bun run start.prod",
-    "start.dev": "bun --watch --hot src/index.ts",
-    "start.prod": "bun dist/src/index.js",
-    "test": "turbo run _test --cache-dir=.turbo",
-    "test.watch": "bun run _test --watch --coverage=false",
-    "_test": "bun test",
-    "_typecheck": "tsc",
-    "typecheck": "turbo run _typecheck",
-    "validate": "turbo _typecheck _format.check _lint.check --cache-dir=.turbo"
-  },
-  "devDependencies": {
-    "@sripwoud/eslint-config": "^1.0.4",
-    "@sripwoud/prettier-config": "^1.0.4",
-    "@sripwoud/tsconfig": "^1.1.0",
-    "bun-types": "^1.0.9",
-    "husky": "^8.0.2",
-    "is-ci": "^3.0.1",
-    "lint-staged": "^13.1.0",
-    "reflect-metadata": "^0.1.13",
-    "turbo": "^1.10.12",
-    "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "barrelsby": "^2.5.1"
-  },
-  "engines": {
-    "node": ">=19"
-  }
+	"name": "ts-template",
+	"scripts": {
+		"barrels": "barrelsby --config .barrelsby.json",
+		"_build": "bun run barrels && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
+		"build": "turbo run _build",
+		"clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+		"_check": "biome check --apply .",
+		"check": "turbo run _check",
+		"precommit": "tsc && bun run barrels && lint-staged",
+		"prepare": "husky install",
+		"start": "bun run build && bun run start.prod",
+		"start.dev": "bun --watch --hot src/index.ts",
+		"start.prod": "bun dist/src/index.js",
+		"test": "turbo run _test --cache-dir=.turbo",
+		"test.watch": "bun run _test --watch --coverage=false",
+		"_test": "bun test",
+		"_typecheck": "tsc",
+		"typecheck": "turbo run _typecheck",
+		"validate": "turbo _typecheck _check --cache-dir=.turbo"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.3.3",
+		"bun-types": "^1.0.9",
+		"husky": "^8.0.2",
+		"is-ci": "^3.0.1",
+		"lint-staged": "^13.1.0",
+		"reflect-metadata": "^0.1.13",
+		"turbo": "^1.10.12",
+		"typescript": "^5.2.2"
+	},
+	"dependencies": {
+		"barrelsby": "^2.5.1"
+	},
+	"engines": {
+		"node": ">=19"
+	}
 }
