@@ -8,8 +8,19 @@
 	},
 	"linter": {
 		"enabled": true,
+		"ignore": ["dist"],
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"complexity": {
+				"useLiteralKeys": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"jsxQuoteStyle": "single",
+			"semicolons": "asNeeded"
 		}
 	}
 }
