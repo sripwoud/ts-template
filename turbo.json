@@ -8,23 +8,11 @@
 			],
 			"outputs": ["dist"]
 		},
-		"_format.check": {
+		"_check": {
 			"inputs": [
-				"*.{cjs,js,jsx,ts,tsx,yaml,yml,json,md,mdx,css,html,graphql}",
-				"{src,test}/**/*.{cjs,js,jsx,ts,tsx,yaml,yml,json,md,mdx,css,html,graphql}"
+				"*.{cjs,js,jsx,ts,tsx,json}",
+				"{src,test}/**/*.{cjs,js,jsx,ts,tsx,json}"
 			]
-		},
-		"_format": {
-			"inputs": [
-				"*.{cjs,js,jsx,ts,tsx,yaml,yml,json,md,mdx,css,html,graphql}",
-				"{src,test}/**/*.{cjs,js,jsx,ts,tsx,yaml,yml,json,md,mdx,css,html,graphql}"
-			]
-		},
-		"_lint.check": {
-			"inputs": ["*.{js,jsx,ts,tsx}", "{src,test}/**/*.{js,jsx,ts,tsx}"]
-		},
-		"_lint": {
-			"inputs": ["*.{js,jsx,ts,tsx}", "{src,test}/**/*.{js,jsx,ts,tsx}"]
 		},
 		"_test": {
 			"inputs": ["{src,test}/**/*.{js,jsx,ts,tsx}"]
