@@ -1,17 +1,44 @@
 {
   "include": ["src", "test"],
   "exclude": ["test/coverage"],
-  "extends": "@sripwoud/tsconfig",
   "files": ["node_modules/jest-chain/types/index.d.ts"],
   "compilerOptions": {
+    "noEmit": true,
+
     "baseUrl": ".",
-    "esModuleInterop": true,
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "checkJs": true,
+    "exactOptionalPropertyTypes": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "jsx": "react-jsx",
+    "moduleDetection": "force",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "useUnknownInCatchVariables": true,
+    "strict": true,
+
     "paths": {
       "@mod": ["src/mod"],
       "@mod/*": ["src/mod/*"]
     },
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "resolveJsonModule": true
+
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+
+    "types": ["bun-types"]
   }
 }
