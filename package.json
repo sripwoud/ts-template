@@ -3,6 +3,7 @@
 	"scripts": {
 		"barrels": "barrelsby --config .barrelsby.json",
 		"_build": "bun run barrels && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
+		"build.docker": "docker build -t ts-template .",
 		"build": "turbo run _build",
 		"clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
 		"_check": "biome check --apply .",
@@ -11,6 +12,7 @@
 		"prepare": "husky install",
 		"start": "bun run build && bun run start.prod",
 		"start.dev": "bun --watch --hot src/index.ts",
+		"start.docker": "docker run -it --rm ts-template",
 		"start.prod": "bun dist/src/index.js",
 		"test": "turbo run _test --cache-dir=.turbo",
 		"test.watch": "bun run _test --watch --coverage=false",

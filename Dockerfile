@@ -1,26 +1,29 @@
-FROM node:19-alpine as build
+FROM oven/bun:latest as base
 
-RUN apk update
-RUN apk add bash
+RUN apt update && apt upgrade && apt install -y bash dumb-init && apt clean
+#WORKDIR app
 
-RUN npm i -g pnpm
+FROM base as deps
 
-ENV PATH /app/node_modules/.bin:$PATH
-WORKDIR app
+COPY package.json bun.lockb ./
+RUN bun install --ignore-scripts
 
-COPY .npmrc package.json pnpm-lock.yaml ./
+FROM deps as build
 
-RUN pnpm i -P --frozen-lockfile --ignore-scripts --reporter=silent
-RUN pnpm i reflect-metadata ts-node-dev tsconfig-paths tslib typescript
+ENV PATH /home/bun/app/node_modules/.bin:$PATH
 
-COPY .env tsconfig.json tsconfig.compile.json .barrelsby.json ./
 COPY src src
+COPY .barrelsby.json tsconfig.json ./
 
-COPY scripts/secrets-entrypoint.sh /usr/local/bin/secrets-entrypoint.sh
-RUN chmod +x /usr/local/bin/secrets-entrypoint.sh
-ENTRYPOINT ["secrets-entrypoint.sh"]
+RUN bun run _build && bun run clean && bun install --production --ignore-scripts
 
-RUN pnpm build
+FROM base as release
 
-CMD ["pnpm", "start.prod"]
+COPY --from=build /home/bun/app/node_modules node_modules
+COPY --from=build /home/bun/app/dist dist
+
+# use dumb-init to avoid PID 1
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["bun", "dist/src/index.js"]
+
 
