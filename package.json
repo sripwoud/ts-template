@@ -2,7 +2,7 @@
   "name": "ts-template",
   "scripts": {
     "barrels": "barrelsby --config .barrelsby.json",
-    "_build": "pnpm barrels && rm -rf dist && tsc --project tsconfig.compile.json",
+    "_build": "bun run barrels && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
     "build": "turbo run _build",
     "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "fix": "turbo _format _lint",
@@ -14,16 +14,17 @@
     "format": "turbo run _format",
     "_format.check": "prettier --check .",
     "format.check": "turbo run _format.check",
-    "precommit": "tsc && pnpm barrels && lint-staged",
+    "precommit": "tsc && bun run barrels && lint-staged",
     "prepare": "husky install",
-    "setup": "pnpm 2> /dev/null || npm i -g pnpm && pnpm i",
-    "start": "pnpm build && pnpm start.prod",
-    "start.dev": "NODE_ENV=development tsnd --cls --exit-child --ignore-watch node_modules --quiet  --respawn --rs --transpile-only -r tsconfig-paths/register src",
-    "start.prod": "NODE_ENV=production node -r module-alias/register dist",
+    "start": "bun run build && bun run start.prod",
+    "start.dev": "bun --watch --hot src/index.ts",
+    "start.prod": "bun dist/src/index.js",
     "test": "turbo run _test --cache-dir=.turbo",
-    "test.watch": "pnpm _test --watch --coverage=false",
-    "_test": "jest --config test/jest.config.ts",
-    "validate": "turbo _format.check _lint.check --cache-dir=.turbo"
+    "test.watch": "bun run _test --watch --coverage=false",
+    "_test": "bun test",
+    "_typecheck": "tsc",
+    "typecheck": "turbo run _typecheck",
+    "validate": "turbo _typecheck _format.check _lint.check --cache-dir=.turbo"
   },
   "_moduleAliases": {
     "@mod": "dist/mod"
@@ -32,26 +33,16 @@
     "@sripwoud/eslint-config": "^1.0.4",
     "@sripwoud/prettier-config": "^1.0.4",
     "@sripwoud/tsconfig": "^1.1.0",
-    "@types/jest": "^29.5.6",
+    "bun-types": "^1.0.9",
     "husky": "^8.0.2",
     "is-ci": "^3.0.1",
-    "jest": "^29.7.0",
-    "jest-chain": "^1.1.6",
-    "jest-extended": "^4.0.2",
-    "jest-watch-typeahead": "^2.2.2",
     "lint-staged": "^13.1.0",
     "reflect-metadata": "^0.1.13",
-    "ts-jest": "^29.1.1",
-    "ts-node-dev": "^2.0.0",
-    "tsconfig-paths": "^4.1.0",
     "turbo": "^1.10.12",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "barrelsby": "^2.5.1",
-    "concurrently": "^7.6.0",
-    "module-alias": "^2.2.2",
-    "tslib": "^2.6.2"
+    "barrelsby": "^2.5.1"
   },
   "engines": {
     "node": ">=19"

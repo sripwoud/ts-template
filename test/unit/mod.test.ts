@@ -1,8 +1,8 @@
 import { TEST } from '@mod'
+import { describe, expect, it } from 'bun:test'
 
 describe('Test', () => {
   it('some test', () => {
-    // can chain matchers with 'jest-chain'
-    expect(TEST).toBeDefined().toEqual('abc')
+    expect(TEST).toEqual('abc')
   })
 })

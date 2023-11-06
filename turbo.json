@@ -28,6 +28,9 @@
     },
     "_test": {
       "inputs": ["{src,test}/**/*.{js,jsx,ts,tsx}"]
+    },
+    "_typecheck": {
+      "inputs": ["*.{js,jsx,ts,tsx}", "{src,test}/**/*.{js,jsx,ts,tsx}"]
     }
   }
 }
