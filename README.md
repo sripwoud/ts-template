@@ -12,13 +12,13 @@
 | ------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Runtime, script, tests runner         | [Bun](https://bun.sh)                                                                           | [bunfig.toml](./bunfig.toml)                                                                                          |
 | Typings                               | [Typescript](https://www.typescriptlang.org/)                                                   | [tsconfig.json](./tsconfig.json)                                                                                      |
-| Formatting, linting                   | [Biome](https://biomejs.dev/)                                                                   | [biome.json](./biome.json)                                                                                            |
+| Formatting                            | [dprint](https://dprint.dev/)                                                                   | [.dprint.jsonc](./.biome.json)                                                                                        |
+| Linting                               | [Biome](https://biomejs.dev/)                                                                   | [.biome.jsonc](./.biome.jsonc)                                                                                        |
 | Continuous Integration                | [GitHub Workflow](https://docs.github.com/en/actions/using-workflows)                           | [.github/workflows](./.github/workflows)                                                                              |
 | Import aliases                        | [Typescript paths](https://www.typescriptlang.org/tsconfig#paths)                               | [tsconfig.json](https://github.com/r1oga/ts-template/blob/5d6983a6d28429b9dd256edf40bad5ee48c33d9c/tsconfig.json#L26) |
 | Rollup exports                        | [Barrelsby](https://github.com/bencoveney/barrelsby)                                            | [.barrelsby.json](./.barrelsby.json)                                                                                  |
 | Containerization                      | [Docker](https://www.docker.com/)                                                               | [Dockerfile](./Dockerfile), [docker-compose.yaml](./docker-compose.yaml)                                              |
 | Pre-commit hook (linting, formatting) | [Husky](https://typicode.github.io/husky), [lint-staged](https://github.com/okonet/lint-staged) | [pre-commit](./.husky/pre-commit), [.lintstagedrc.yaml](./.lintstagedrc.yaml)                                         |
-| Build System / Caching                | [Turborepo](https://turbo.build)                                                                | [turbo.json](./turbo.json)                                                                                            |
 
 ## Start
 
