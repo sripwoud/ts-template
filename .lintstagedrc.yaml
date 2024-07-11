@@ -1,6 +1,6 @@
 '**/*.{cjs,md,json,jsonc,js,jsx,mjs,ts,tsx,yaml,yml}':
   - bun dprint fmt
-  - biome check --config-path .biome.jsonc
+  - biome check --config-path .biome.jsonc --no-errors-on-unmatched
 
 '**/*.{cjs,js,jsx,mjs,ts,tsx}':
   - tsc-files --noEmit
