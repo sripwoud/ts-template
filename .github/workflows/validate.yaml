@@ -13,8 +13,8 @@ jobs:
       - run: bun install
       - name: Validate
         run: |
-          concurrently \
-            -c auto
+          bun concurrently \
+            -c auto \
             -n format,lint,typecheck \
             'bun dprint check' \
             'bun biome check --config-path=.biome.jsonc .' \
