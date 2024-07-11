@@ -1,3 +1,6 @@
-'*.+(js|json|jsx|ts|tsx)':
-  - biome check --apply .
+'**/*.{cjs,md,json,jsonc,js,jsx,mjs,ts,tsx,yaml,yml}':
+  - bun dprint fmt
+  - biome check --config-path .biome.jsonc
+
+'**/*.{cjs,js,jsx,mjs,ts,tsx}':
   - tsc-files --noEmit

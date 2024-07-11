@@ -9,7 +9,7 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
 | Feature                               | With                                                                                            | Configuration File                                                                                                    |
-|---------------------------------------|-------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| ------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Runtime, script, tests runner         | [Bun](https://bun.sh)                                                                           | [bunfig.toml](./bunfig.toml)                                                                                          |
 | Typings                               | [Typescript](https://www.typescriptlang.org/)                                                   | [tsconfig.json](./tsconfig.json)                                                                                      |
 | Formatting, linting                   | [Biome](https://biomejs.dev/)                                                                   | [biome.json](./biome.json)                                                                                            |

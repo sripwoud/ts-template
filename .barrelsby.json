@@ -1,6 +1,6 @@
 {
-	"directory": ["src/mod"],
-	"delete": true,
-	"noSemicolon": true,
-	"singleQuotes": true
+  "directory": ["src/mod"],
+  "delete": true,
+  "noSemicolon": true,
+  "singleQuotes": true
 }
