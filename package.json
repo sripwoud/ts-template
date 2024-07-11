@@ -1,36 +1,31 @@
 {
-	"name": "ts-template",
-	"scripts": {
-		"build": "bun run _barrels && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
-		"build.docker": "docker build -t ts-template .",
-		"prepare": "husky",
-		"start": "bun run build && bun run start.prod",
-		"start.dev": "bun --watch --hot src/index.ts",
-		"start.docker": "docker run -it --rm ts-template",
-		"start.prod": "bun dist/src/index.js",
-		"test": "bun test --coverage",
-		"test.watch": "bun test --watch",
-		"validate": "concurrently -c auto, -n typecheck,check 'bun _typecheck' 'bun _check'",
-		"_barrels": "barrelsby --config .barrelsby.json",
-		"_check": "biome check --apply .",
-		"_clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
-		"_typecheck": "tsc"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.3.3",
-		"bun-types": "^1.0.9",
-		"concurrently": "^8.2.2",
-		"husky": "^9.0.11",
-		"is-ci": "^3.0.1",
-		"lint-staged": "^13.1.0",
-		"reflect-metadata": "^0.1.13",
-		"tsc-files": "^1.1.4",
-		"typescript": "^5.2.2"
-	},
-	"dependencies": {
-		"barrelsby": "^2.5.1"
-	},
-	"engines": {
-		"node": ">=19"
-	}
+  "name": "ts-template",
+  "scripts": {
+    "build": "barrelsby --config .barrelsby.json && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
+    "build.docker": "docker build -t ts-template .",
+    "prepare": "husky",
+    "start": "bun run build && bun run start.prod",
+    "start.dev": "bun --watch --hot src/index.ts",
+    "start.docker": "docker run -it --rm ts-template",
+    "start.prod": "bun dist/src/index.js",
+    "test": "bun test --coverage",
+    "test.watch": "bun test --watch"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "bun-types": "^1.0.9",
+    "concurrently": "^8.2.2",
+    "husky": "^9.0.11",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^13.1.0",
+    "reflect-metadata": "^0.1.13",
+    "tsc-files": "^1.1.4",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "barrelsby": "^2.5.1"
+  },
+  "engines": {
+    "node": ">=19"
+  }
 }
