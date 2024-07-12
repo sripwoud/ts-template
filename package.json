@@ -16,6 +16,9 @@
   "engines": {
     "node": ">=20"
   },
+  "overrides": {
+    "braces": "^3.0.3"
+  },
   "scripts": {
     "build": "barrelsby --config .barrelsby.json && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
     "build.docker": "docker build -t ts-template .",
