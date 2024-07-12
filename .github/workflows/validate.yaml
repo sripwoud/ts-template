@@ -24,7 +24,7 @@ jobs:
             package.json
             tsconfig.json
 
-  test:
+  _test:
     needs: changed-files
     if: needs.changed-files.outputs.any_ts_changed == 'true'
     runs-on: ubuntu-latest
@@ -38,6 +38,14 @@ jobs:
         with:
           format: lcov
           file: lcov.info
+
+  test:
+    needs: _test
+    # https://stackoverflow.com/a/77066140/9771158
+    if: ${{ always() && !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Tests OK (passed or skipped)'
 
   validate:
     runs-on: ubuntu-latest
