@@ -41,6 +41,7 @@ jobs:
 
   test:
     needs: _test
+    # workaround for https://github.com/orgs/community/discussions/13690
     # https://stackoverflow.com/a/77066140/9771158
     if: ${{ always() && !failure() && !cancelled() }}
     runs-on: ubuntu-latest
