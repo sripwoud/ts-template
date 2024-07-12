@@ -14,7 +14,7 @@
     "typescript": "^5.2.2"
   },
   "engines": {
-    "node": ">=19"
+    "node": ">=20"
   },
   "scripts": {
     "build": "barrelsby --config .barrelsby.json && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
