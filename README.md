@@ -20,15 +20,16 @@
 | Containerization                      | [Docker](https://www.docker.com/)                                                               | [Dockerfile](./Dockerfile), [docker-compose.yaml](./docker-compose.yaml)                                              |
 | Pre-commit hook (linting, formatting) | [Husky](https://typicode.github.io/husky), [lint-staged](https://github.com/okonet/lint-staged) | [pre-commit](./.husky/pre-commit), [.lintstagedrc.yaml](./.lintstagedrc.yaml)                                         |
 
-## Start
+## Getting Started
 
 Pre requisites: [bun](https://bun.sh/docs/installation), [docker](https://docs.docker.com/get-docker/)
 
 ```commandline
-bun run start
+bun i
+bun run
 ```
 
-Docker
+### Docker
 
 ```commandline
 docker compose up
