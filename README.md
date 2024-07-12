@@ -4,7 +4,7 @@
 </div>
 <br/>
 
-![Code Quality GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/r1oga/ts-template/code-quality.yaml?branch=main&label=Code%20Quality)
+![main GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/sripwoud/ts-template/main.yaml?branch=main&label=main)
 [![Coverage Status](https://coveralls.io/repos/github/r1oga/ts-template/badge.svg?branch=main)](https://coveralls.io/github/r1oga/ts-template?branch=main)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
