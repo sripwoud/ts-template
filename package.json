@@ -6,9 +6,7 @@
     "bun-types": "^1.0.9",
     "concurrently": "^8.2.2",
     "dprint": "^0.47.2",
-    "husky": "^9.0.11",
-    "is-ci": "^3.0.1",
-    "lint-staged": "^13.1.0",
+    "lefthook": "^1.7.11",
     "reflect-metadata": "^0.1.13",
     "tsc-files": "^1.1.4",
     "typescript": "^5.2.2"
@@ -22,7 +20,6 @@
   "scripts": {
     "build": "barrelsby --config .barrelsby.json && rm -rf dist && bun build src --outdir dist --sourcemap=inline --target=bun",
     "build.docker": "docker build -t ts-template .",
-    "prepare": "husky",
     "start": "bun run build && bun run start.prod",
     "start.dev": "bun --watch --hot src/index.ts",
     "start.docker": "docker run -it --rm ts-template",
