@@ -9,5 +9,5 @@ pre-commit:
     lint:
       run: bun biome lint --config-path=.biome.jsonc --no-errors-on-unmatched
     typecheck:
-      glob: '*.{cjs,js,jsx,mjs,ts,tsx}'
+      glob: "*.{cjs,js,jsx,mjs,ts,tsx}"
       run: bun tsc-files --noEmit
