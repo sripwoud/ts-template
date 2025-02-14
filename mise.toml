@@ -1,3 +1,9 @@
+[tasks]
+build = { alias = "b", run = "bun build src --outdir dist --sourcemap=inline --target=bun" }
+dev = { alias = "d", run = "bun --watch --hot src/index.ts" }
+test = { alias = "t", run = "bun test --coverage" }
+test-watch = { alias = "tw", run = "bun test --watch" }
+
 [tools]
 bun = "latest"
 lefthook = "latest"
