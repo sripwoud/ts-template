@@ -10,7 +10,8 @@
 
 | Feature                                          | With                                                                  | Configuration File                                                                                                    |
 | ------------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Runtime, script, tests runner                    | [Bun](https://bun.sh)                                                 | [bunfig.toml](./bunfig.toml)                                                                                          |
+| Runtime, tests runner                            | [Bun](https://bun.sh)                                                 | [bunfig.toml](./bunfig.toml)                                                                                          |
+| Tasks runner, environment & runtime management   | [mise](https://mise.dev/)                                             | [mise.toml](./mise.toml)                                                                                              |
 | Typings                                          | [Typescript](https://www.typescriptlang.org/)                         | [tsconfig.json](./tsconfig.json)                                                                                      |
 | Formatting                                       | [dprint](https://dprint.dev/)                                         | [.dprint.jsonc](./.biome.json)                                                                                        |
 | Linting                                          | [Biome](https://biomejs.dev/)                                         | [.biome.jsonc](./.biome.jsonc)                                                                                        |
@@ -19,18 +20,3 @@
 | Rollup exports                                   | [Barrelsby](https://github.com/bencoveney/barrelsby)                  | [.barrelsby.json](./.barrelsby.json)                                                                                  |
 | Containerization                                 | [Docker](https://www.docker.com/)                                     | [Dockerfile](./Dockerfile), [docker-compose.yaml](./docker-compose.yaml)                                              |
 | Pre-commit hook (linting, formatting, typecheck) | [lefthook](https://github.com/evilmartians/lefthook/)                 | [.lefthook.yml](./.lefthook.yml)                                                                                      |
-
-## Getting Started
-
-Pre requisites: [bun](https://bun.sh/docs/installation), [docker](https://docs.docker.com/get-docker/)
-
-```commandline
-bun i
-bun run
-```
-
-### Docker
-
-```commandline
-docker compose up
-```
