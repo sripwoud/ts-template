@@ -10,27 +10,27 @@
 
 | Feature                                          | With                                                                  | Configuration File                                                                                                    |
 | ------------------------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Runtime, script, tests runner                    | [Bun](https://bun.sh)                                                 | [bunfig.toml](./bunfig.toml)                                                                                          |
+| Runtime, tests runner                            | [Bun](https://bun.sh)                                                 | [bunfig.toml](./bunfig.toml)                                                                                          |
+| Tasks runner, environment & runtime management   | [mise](https://mise.dev/)                                             | [mise.toml](./mise.toml)                                                                                              |
 | Typings                                          | [Typescript](https://www.typescriptlang.org/)                         | [tsconfig.json](./tsconfig.json)                                                                                      |
 | Formatting                                       | [dprint](https://dprint.dev/)                                         | [.dprint.jsonc](./.biome.json)                                                                                        |
 | Linting                                          | [Biome](https://biomejs.dev/)                                         | [.biome.jsonc](./.biome.jsonc)                                                                                        |
 | Continuous Integration                           | [GitHub Workflow](https://docs.github.com/en/actions/using-workflows) | [.github/workflows](./.github/workflows)                                                                              |
 | Import aliases                                   | [Typescript paths](https://www.typescriptlang.org/tsconfig#paths)     | [tsconfig.json](https://github.com/r1oga/ts-template/blob/5d6983a6d28429b9dd256edf40bad5ee48c33d9c/tsconfig.json#L26) |
-| Rollup exports                                   | [Barrelsby](https://github.com/bencoveney/barrelsby)                  | [.barrelsby.json](./.barrelsby.json)                                                                                  |
-| Containerization                                 | [Docker](https://www.docker.com/)                                     | [Dockerfile](./Dockerfile), [docker-compose.yaml](./docker-compose.yaml)                                              |
 | Pre-commit hook (linting, formatting, typecheck) | [lefthook](https://github.com/evilmartians/lefthook/)                 | [.lefthook.yml](./.lefthook.yml)                                                                                      |
 
-## Getting Started
+## Develop
 
-Pre requisites: [bun](https://bun.sh/docs/installation), [docker](https://docs.docker.com/get-docker/)
+I use [`mise`](https://mise.jdx.dev) to manage runtimes, manage environment variables, and run tasks.\
+To install it:
 
 ```commandline
-bun i
-bun run
+curl https://mise.run | sh
+mise activate
 ```
 
-### Docker
+To run tasks interactively:
 
 ```commandline
-docker compose up
+mise run
 ```

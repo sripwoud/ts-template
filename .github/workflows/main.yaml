@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Tests OK (passed or skipped)
-        run: true
+        run: exit 0
 
   validate:
     runs-on: ubuntu-latest

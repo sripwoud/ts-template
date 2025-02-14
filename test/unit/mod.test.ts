@@ -1,4 +1,4 @@
-import { TEST } from '@mod'
+import { TEST } from '@mod/file'
 import { describe, expect, it } from 'bun:test'
 
 describe('Test', () => {
