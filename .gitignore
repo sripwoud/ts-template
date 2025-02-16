@@ -3,3 +3,4 @@ dist
 coverage
 lcov.info
 .env
+.zed
