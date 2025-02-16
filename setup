@@ -70,8 +70,9 @@ integrate_convco_with_git() {
 
 main() {
   maybe_install_mise
+  mise install
   integrate_convco_with_git
-  lefthook install > /dev/null && log "✅ Configured git hooks"
+  lefthook install >/dev/null && log "✅ Configured git hooks"
 }
 
 main
