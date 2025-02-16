@@ -1,8 +1,5 @@
-<div style='display: flex'>
-  <img alt='ts icon' width='50' src='https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg'/>
-  <span style='font-weight: bold'>&nbsp;&nbsp<strong>PROJECT TEMPLATE</strong></span>
-</div>
-<br/>
+| <img alt='ts icon' width='50' src='https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg'/> | TEMPLATE |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 
 ![main GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/sripwoud/ts-template/main.yaml?branch=main&label=main)
 [![Coverage Status](https://coveralls.io/repos/github/r1oga/ts-template/badge.svg?branch=main)](https://coveralls.io/github/r1oga/ts-template?branch=main)
