@@ -7,4 +7,5 @@ test-watch = { alias = "tw", run = "bun test --watch" }
 [tools]
 bun = "latest"
 "cargo:convco" = "latest"
-lefthook = "latest"
+hk = "latest"
+pkl = "latest"

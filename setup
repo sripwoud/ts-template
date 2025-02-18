@@ -72,7 +72,7 @@ main() {
   maybe_install_mise
   mise install
   integrate_convco_with_git
-  lefthook install >/dev/null && log "✅ Configured git hooks"
+  hk install >/dev/null && log "✅ Configured git hooks"
 }
 
 main

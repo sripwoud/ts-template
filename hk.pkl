@@ -1,0 +1,15 @@
+amends "https://hk.jdx.dev/v0/hk.pkl"
+
+min_hk_version = "0.2.3"
+
+`pre-commit` {
+    ["format"] {
+        fix_all = "bun dprint fmt"
+    }
+    ["lint"] {
+      check = "bun biome lint --config-path=.biome.jsonc --no-errors-on-unmatched {{files}}"
+    }
+    ["typecheck"] {
+      check = "bun tsc-files --noEmit {{files}}"
+    }
+ }
