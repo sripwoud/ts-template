@@ -14,7 +14,7 @@
 | Linting                                        | [Biome](https://biomejs.dev/)                                         | [.biome.jsonc](./.biome.jsonc)                                                                                        |
 | Continuous Integration                         | [GitHub Workflow](https://docs.github.com/en/actions/using-workflows) | [.github/workflows](./.github/workflows)                                                                              |
 | Import aliases                                 | [Typescript paths](https://www.typescriptlang.org/tsconfig#paths)     | [tsconfig.json](https://github.com/r1oga/ts-template/blob/5d6983a6d28429b9dd256edf40bad5ee48c33d9c/tsconfig.json#L26) |
-| Git hooks management                           | [lefthook](https://github.com/evilmartians/lefthook/)                 | [.lefthook.yml](./.lefthook.yml)                                                                                      |
+| Git hooks management                           | [hk](https://hk.jdx.dev/)                                             | [hk.pkl](./hk.pkl)                                                                                                    |
 | Conventional Commits                           | [convco](https://github.com/convco/convco)                            | [.convco](./.convco)                                                                                                  |
 
 ## Develop
