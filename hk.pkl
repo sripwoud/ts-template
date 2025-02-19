@@ -4,12 +4,12 @@ min_hk_version = "0.2.3"
 
 `pre-commit` {
     ["format"] {
-        fix_all = "bun dprint fmt"
+        fix_all = "dprint fmt"
     }
     ["lint"] {
-      check = "bun biome lint --config-path=.biome.jsonc --no-errors-on-unmatched {{files}}"
+      check = "biome lint --config-path=.biome.jsonc --no-errors-on-unmatched {{files}}"
     }
     ["typecheck"] {
-      check = "bun tsc-files --noEmit {{files}}"
+      check = "tsc-files --noEmit {{files}}"
     }
  }

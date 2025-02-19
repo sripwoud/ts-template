@@ -49,17 +49,22 @@ jobs:
       - name: Tests OK (passed or skipped)
         run: exit 0
 
-  validate:
+  check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - name: Validate
-        run: |
-          bun concurrently \
-            -c auto \
-            -n format,lint,typecheck \
-            'bun dprint check' \
-            'bun biome check --config-path=.biome.jsonc .' \
-            'bun tsc'
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        with:
+          mise_toml: |
+            [tasks]
+            "check:format" = { run = "dprint check --excludes mise.toml" }
+            "check:lint" = { run = "biome check --config-path=.biome.jsonc" }
+            "check:types" = { run = "tsc" }
+            "check" = { depends = "check:*" }
+            [tools]
+            bun = "latest"
+            dprint = "latest"
+            "npm:@biomejs/biome" = "latest"
+            "npm:typescript" = "latest"
+      - run: bun i
+      - run: mise r check
