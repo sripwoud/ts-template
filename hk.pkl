@@ -10,6 +10,6 @@ min_hk_version = "0.2.3"
       check = "biome lint --config-path=.biome.jsonc --no-errors-on-unmatched {{files}}"
     }
     ["typecheck"] {
-      check = "tsc-files --noEmit {{files}}"
+      check_all = "tsc"
     }
  }
