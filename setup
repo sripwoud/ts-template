@@ -22,52 +22,44 @@ maybe_install_mise() {
   fi
 }
 
-find_editor() {
-  editor=""
-  global_git_editor=$(git config --global --get core.editor || true)
+# i don't care that much if intermediate dev branches commits aren't always conventional
+# but i do care about convenional commits on main because there are used for semantic versioning/releasing
+use_convco_as_git_editor_only_on_main() {
+  cat >.git/hooks/prepare-commit-msg <<'EOF'
+  #!/bin/sh
 
-  if [ -n "$global_git_editor" ]; then
-    editor="$global_git_editor"
-  elif [ -n "$EDITOR" ]; then
-    editor="$EDITOR"
-  elif command -v nvim >/dev/null; then
-    editor="nvim"
-  elif command -v vim >/dev/null; then
-    editor="vim"
-  elif command -v vi >/dev/null; then
-    editor="vi"
-  elif command -v code >/dev/null; then
-    editor="code"
-  elif command -v emacs >/dev/null; then
-    editor="emacs"
-  elif command -v nano >/dev/null; then
-    editor="nano"
-  elif command -v notepad >/dev/null; then
-    editor="notepad"
-  fi
-
-  echo "$editor"
-}
-
-integrate_convco_with_git() {
-  git config --local core.editor "convco commit"
-
-  # do not use convco for interactive rebase (git rebase -i)
-  # use system's default editor instead
-  editor=$(find_editor)
-
-  if [ -n "$editor" ]; then
-    git config --local sequence.editor "$editor"
+  if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
+      git config --local core.editor "convco commit"
   else
-    log "${RED}error: No editor found.$RESET"
-    log "Please set the ${ORANGE}EDITOR$RESET environment variable to your preferred editor and run ${ORANGE}./setup$RESET again."
+      # Restore the default editor for normal commits
+      default_editor=$(git config --local --get sequence.editor || git config --global --get core.editor || echo "$EDITOR" || command -v nvim || command -v vim || command -v vi || command -v nano)
+
+      if [ -n "$default_editor" ]; then
+          git config --local core.editor "$default_editor"
+      else
+          echo "No default editor found. Please set one in your git config or set the EDITOR environment variable."
+      fi
   fi
+
+  # Always ensure interactive rebase uses a normal editor (not convco)
+  if [ -z "$(git config --local --get sequence.editor)" ]; then
+      editor=$(git config --global --get core.editor || echo "$EDITOR" || command -v nvim || command -v vim || command -v vi || command -v nano)
+
+      if [ -n "$editor" ]; then
+          git config --local sequence.editor "$editor"
+      else
+          echo "No default editor found. Please set one in your git config or set the EDITOR environment variable."
+      fi
+  fi
+EOF
+
+  chmod +x .git/hooks/prepare-commit-msg
 }
 
 main() {
   maybe_install_mise
-  mise install &>/dev/null && log "✅ Installed dev tools and runtimes"
-  integrate_convco_with_git
+  mise install >/dev/null 2>&1 && log "✅ Installed dev tools and runtimes"
+  use_convco_as_git_editor_only_on_main
   hk install >/dev/null && log "✅ Configured git hooks"
   bun i >/dev/null && log "✅ Installed node deps"
 }
