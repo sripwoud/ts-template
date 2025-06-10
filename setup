@@ -24,7 +24,7 @@ maybe_install_mise() {
 # i don't care that much if intermediate dev branches commits aren't always conventional
 # but i do care about convenional commits on main because there are used for semantic versioning/releasing
 use_convco_as_git_editor_only_on_main() {
-  cat >.git/hooks/prepare-commit-msg <<'EOF'
+  cat >.git/hooks/commit-msg <<'EOF'
   #!/bin/sh
 
   if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
@@ -52,7 +52,7 @@ use_convco_as_git_editor_only_on_main() {
   fi
 EOF
 
-  chmod +x .git/hooks/prepare-commit-msg
+  chmod +x .git/hooks/commit-msg
 }
 
 main() {
