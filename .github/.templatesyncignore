@@ -1,1 +1,6 @@
+.dprint.jsonc
 .github/workflows
+# TODO: extend config instead
+hk.pkl
+mise.toml
+README.md
