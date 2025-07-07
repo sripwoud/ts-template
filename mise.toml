@@ -1,29 +1,10 @@
-[tasks.build]
-alias = "b"
-description = "Build the project"
-run = "bun build src --outdir dist --sourcemap=inline --target=bun"
-
-[tasks.dev]
-alias = "d"
-description = "Run the project in dev mode"
-run = "bun --watch --hot src/index.ts"
-
-[tasks.test]
-alias = "t"
-description = "Run the project tests"
-run = "bun test --coverage"
-
-[tasks.test-watch]
-alias = "tw"
-description = "Run the project tests in watch mode"
-run = "bun test --watch"
+[tasks.hello]
+alias = "h"
+description = "Print 'hello'"
+run = "echo hello"
 
 [tools]
-bun = "latest"
 "cargo:convco" = "latest"
 dprint = "latest"
 hk = "latest"
-"npm:@biomejs/biome" = "latest"
-"npm:tsc-files" = "latest"
-"npm:typescript" = "latest"
 pkl = "latest"
