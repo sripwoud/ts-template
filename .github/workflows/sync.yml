@@ -1,3 +1,4 @@
+name: Sync Template
 on:
   schedule:
     - cron: "0 0 * * *"
