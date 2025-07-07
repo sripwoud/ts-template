@@ -16,7 +16,7 @@ jobs:
       any_ts_changed: ${{ steps.changed-files.outputs.any_changed }}
     steps:
       - uses: actions/checkout@v4
-      - uses: tj-actions/changed-files@v44
+      - uses: tj-actions/changed-files@v46
         id: changed-files
         with:
           files: |
