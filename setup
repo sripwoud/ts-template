@@ -2,75 +2,12 @@
 
 set -eu
 
-ORANGE="\033[33m"
-RESET="\033[0m"
-
 log() {
   printf "%b\n" "$1"
 }
 
-install_mise() {
-  curl https://mise.run | sh
-  echo "✅ Installed ${ORANGE}mise$RESET"
-}
-
-maybe_install_mise() {
-  if ! command -v mise >/dev/null; then
-    install_mise
-  fi
-}
-
-# i don't care that much if intermediate dev branches commits aren't always conventional
-# but i do care about convenional commits on main because there are used for semantic versioning/releasing
-use_convco_as_git_editor_only_on_main() {
-  cat >.git/hooks/commit-msg <<'EOF'
-  #!/bin/sh
-
-  # Check if repository has any commits
-  if ! git rev-parse HEAD >/dev/null 2>&1; then
-      # No commits yet, check the initial branch name from git config
-      initial_branch=$(git config --get init.defaultBranch || echo "main")
-      current_branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo "$initial_branch")
-  else
-      current_branch=$(git rev-parse --abbrev-ref HEAD)
-  fi
-
-  if [ "$current_branch" = "main" ]; then
-      git config --local core.editor "convco commit"
-  else
-      # Restore the default editor for normal commits
-      default_editor=$(git config --local --get sequence.editor || git config --global --get core.editor || echo "$EDITOR" || command -v nvim || command -v vim || command -v vi || command -v nano)
-
-      if [ -n "$default_editor" ]; then
-          git config --local core.editor "$default_editor"
-      else
-          echo "No default editor found. Please set one in your git config or set the EDITOR environment variable."
-      fi
-  fi
-
-  # Always ensure interactive rebase uses a normal editor (not convco)
-  if [ -z "$(git config --local --get sequence.editor)" ]; then
-      editor=$(git config --global --get core.editor || echo "$EDITOR" || command -v nvim || command -v vim || command -v vi || command -v nano)
-
-      if [ -n "$editor" ]; then
-          git config --local sequence.editor "$editor"
-      else
-          echo "No default editor found. Please set one in your git config or set the EDITOR environment variable."
-      fi
-  fi
-EOF
-
-  chmod +x .git/hooks/commit-msg
-}
-
 main() {
-  maybe_install_mise
-  mise install
-  log "✅ Installed dev tools and runtimes"
-  
-  use_convco_as_git_editor_only_on_main
-  hk install
-  log "✅ Configured git hooks"
+  curl https://raw.githubusercontent.com/sripwoud/agnostic-template/refs/heads/main/setup | sh
   
   bun i
   log "✅ Installed node deps"
