@@ -6,6 +6,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 # no need to bother caching bun deps
 # https://github.com/oven-sh/setup-bun/issues/14#issuecomment-1714116221
