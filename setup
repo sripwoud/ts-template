@@ -3,7 +3,6 @@
 set -eu
 
 ORANGE="\033[33m"
-RED="\033[31m"
 RESET="\033[0m"
 
 log() {
@@ -27,7 +26,16 @@ use_convco_as_git_editor_only_on_main() {
   cat >.git/hooks/commit-msg <<'EOF'
   #!/bin/sh
 
-  if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
+  # Check if repository has any commits
+  if ! git rev-parse HEAD >/dev/null 2>&1; then
+      # No commits yet, check the initial branch name from git config
+      initial_branch=$(git config --get init.defaultBranch || echo "main")
+      current_branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo "$initial_branch")
+  else
+      current_branch=$(git rev-parse --abbrev-ref HEAD)
+  fi
+
+  if [ "$current_branch" = "main" ]; then
       git config --local core.editor "convco commit"
   else
       # Restore the default editor for normal commits
@@ -57,10 +65,15 @@ EOF
 
 main() {
   maybe_install_mise
-  mise install && log "✅ Installed dev tools and runtimes"
+  mise install
+  log "✅ Installed dev tools and runtimes"
+  
   use_convco_as_git_editor_only_on_main
-  hk install && log "✅ Configured git hooks"
-  bun i && log "✅ Installed node deps"
+  hk install
+  log "✅ Configured git hooks"
+  
+  bun i
+  log "✅ Installed node deps"
 }
 
 main
