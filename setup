@@ -8,9 +8,9 @@ log() {
 
 main() {
   curl -s https://raw.githubusercontent.com/sripwoud/agnostic-template/refs/heads/main/setup | sh
-  
+
   bun i
-  log "✅ Installed node deps"
+  log "Installed node deps"
 }
 
 main
