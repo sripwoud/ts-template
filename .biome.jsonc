@@ -15,10 +15,10 @@
     "enabled": true,
     "includes": ["**", "!**/dist"],
     "rules": {
-      "recommended": true,
       "complexity": {
         "useLiteralKeys": "off",
       },
+      "recommended": true,
       "style": {
         "noParameterAssign": "error",
         "useAsConstAssertion": "error",
@@ -34,7 +34,9 @@
     },
   },
   // organize imports with dprint
-  "assist": { "actions": { "source": { "organizeImports": "off" } } },
+  "assist": {
+    "actions": { "source": { "organizeImports": "off", "useSortedAttributes": "on", "useSortedProperties": "on" } },
+  },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
