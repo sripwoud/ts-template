@@ -1,23 +1,18 @@
 amends "package://github.com/jdx/hk/releases/download/v1.1.1/hk@1.1.1#/Config.pkl"
 
 local linters  = new Mapping<String, Step> {
-  ["biome"]  {
-    check = "biome lint --config-path=.biome.jsonc --no-errors-on-unmatched {{files}}"
-    glob = List("*.js", "*.jsx", "*.ts", "*.tsx")
-  }
-  ["dprint"]  {
+  ["fmt"]  {
     fix = "dprint fmt"
     stage = "*"
-  }
-  ["typescript"]  {
-    check = "tsc"
   }
 }
 
 hooks {
-    ["pre-commit"] {
-        fix = true
-        stash = "git"
-        steps = linters
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps {
+      ...linters
     }
+  }
 }

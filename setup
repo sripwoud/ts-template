@@ -2,15 +2,77 @@
 
 set -eu
 
+ORANGE="\033[33m"
+RESET="\033[0m"
+
 log() {
   printf "%b\n" "$1"
 }
 
-main() {
-  curl -s https://raw.githubusercontent.com/sripwoud/agnostic-template/refs/heads/main/setup | sh
+install_mise() {
+  curl https://mise.run | sh
+  echo "✅ Installed ${ORANGE}mise$RESET"
+}
+
+maybe_install_mise() {
+  if ! command -v mise >/dev/null; then
+    install_mise
+  fi
+}
+
+# i don't care that much if intermediate dev branches commits aren't always conventional
+# but i do care about convenional commits on main because there are used for semantic versioning/releasing
+use_convco_as_git_editor_only_on_main() {
+  # Create a wrapper script that decides which editor to use
+  cat >.git/hooks/smart-commit-editor <<'EOF'
+#!/bin/sh
+# Smart editor wrapper that uses convco on main branch, normal editor otherwise
+
+# Check if we're in a rebase
+if [ -d "$(git rev-parse --git-dir)/rebase-merge" ] || [ -d "$(git rev-parse --git-dir)/rebase-apply" ]; then
+  # In rebase, use normal editor
+  default_editor=$(git config --global --get core.editor || echo "$EDITOR" || command -v nvim || command -v vim || command -v vi || command -v nano)
+  exec $default_editor "$@"
+fi
+
+# Check current branch
+if ! git rev-parse HEAD >/dev/null 2>&1; then
+  # No commits yet, check the initial branch name
+  initial_branch=$(git config --get init.defaultBranch || echo "main")
+  current_branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo "$initial_branch")
+else
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+fi
+
+if [ "$current_branch" = "main" ]; then
+  # Use convco on main branch
+  exec convco commit "$@"
+else
+  # Use normal editor on other branches
+  default_editor=$(git config --global --get core.editor || echo "$EDITOR" || command -v nvim || command -v vim || command -v vi || command -v nano)
+  exec $default_editor "$@"
+fi
+EOF
+
+  chmod +x .git/hooks/smart-commit-editor
   
-  bun i
-  log "✅ Installed node deps"
+  # Set this wrapper as the git editor
+  git config --local core.editor ".git/hooks/smart-commit-editor"
+  
+  # Ensure sequence.editor is set for rebase operations to bypass our wrapper
+  default_editor=$(git config --global --get core.editor || echo "$EDITOR" || command -v nvim || command -v vim || command -v vi || command -v nano)
+  if [ -n "$default_editor" ]; then
+    git config --local sequence.editor "$default_editor"
+  fi
+  
+  echo "✅ Configured smart commit editor to use convco on main branch only"
+}
+
+main() {
+  maybe_install_mise
+  mise install && log "✅ Installed dev tools and runtimes"
+  use_convco_as_git_editor_only_on_main
+  hk install && log "✅ Configured git hooks"
 }
 
 main
