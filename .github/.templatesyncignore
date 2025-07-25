@@ -1,2 +1,2 @@
-*
-!.convco
+.github/workflows/main.yml
+.github/workflows/sync.yml
