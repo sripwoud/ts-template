@@ -8,6 +8,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 # no need to bother caching bun deps
 # https://github.com/oven-sh/setup-bun/issues/14#issuecomment-1714116221
 jobs:
@@ -29,6 +32,9 @@ jobs:
     needs: changed-files
     if: needs.changed-files.outputs.any_ts_changed == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
