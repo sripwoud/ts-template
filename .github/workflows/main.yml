@@ -1,15 +1,14 @@
 name: main
 on:
-  # push trigger required to get coveralls monitoring of default branch
-  # pull_request required to get PR coveralls comments
   push:
     branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
 
-# no need to bother caching bun deps
-# https://github.com/oven-sh/setup-bun/issues/14#issuecomment-1714116221
+permissions:
+  contents: read
+
 jobs:
   changed-files:
     runs-on: ubuntu-latest
@@ -29,6 +28,9 @@ jobs:
     needs: changed-files
     if: needs.changed-files.outputs.any_ts_changed == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -42,6 +44,7 @@ jobs:
 
   test:
     needs: _test
+    permissions: {}
     # workaround for https://github.com/orgs/community/discussions/13690
     # https://stackoverflow.com/a/77066140/9771158
     if: ${{ !(failure() || cancelled()) }}
@@ -51,6 +54,8 @@ jobs:
         run: exit 0
 
   check:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
