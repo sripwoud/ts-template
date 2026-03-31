@@ -1,2 +1,4 @@
 *
 !.convco
+!LICENSE
+!.github/workflows/semantic-pr.yml

@@ -1,7 +1,7 @@
 name: Sync Template
 on:
-  schedule:
-    - cron: "0 0 * * *"
+  repository_dispatch:
+    types: [template-sync]
   workflow_dispatch:
 
 jobs:
