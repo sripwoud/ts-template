@@ -1,6 +1,9 @@
-*
-!.convco
-!LICENSE
-!.github/
-!.github/workflows/
-!.github/workflows/semantic-pr.yml
+.dprint.jsonc
+.github/workflows/main.yml
+.github/workflows/notify-children.yml
+.github/workflows/sync.yml
+.gitignore
+hk.pkl
+mise.toml
+README.md
+setup
