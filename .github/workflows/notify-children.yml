@@ -2,6 +2,7 @@ name: Notify Children Templates
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   notify:
