@@ -21,3 +21,4 @@ jobs:
           pr_title: "chore: upstream merge template repository"
           github_token: ${{ steps.app-token.outputs.token }}
           source_repo_path: sripwoud/agnostic-template
+          template_sync_ignore_file_path: .github/.templatesyncignore
